@@ -1,0 +1,12 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.36f1
+CRC: 3136671592
+HashAppended: 0
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: d20.peakbundle
+      Dependencies: {}
+    Info_1:
+      Name: luckyblock.peakbundle
+      Dependencies: {}

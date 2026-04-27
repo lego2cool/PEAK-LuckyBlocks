@@ -1,0 +1,72 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.36f1
+CRC: 732253028
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2219780380027502dbca89603b448efe
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c26ea7dcbc7be457eabb1f95c57b6ec5
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 71165c01a5e4189809f579df6a5432eb
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a44ff709bc91abce780008938281a0aa, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3817816e1832aa939a8fd85555ea671b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c30496d6ae6d6f907456e10a94e01ec6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4010ca30245e7832d9a346612df00d11, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8fb177461be837a3546cac05929bd981, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 796afb80110f34a39baaf989191fea45, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b043c240425f47fb23c7abfa03bfc85a, type: 3}
+- Class: 114
+  Script: {fileID: -1283557461, guid: 7033f03d09d1bd0032d912463ac99743, type: 3}
+- Class: 114
+  Script: {fileID: -1960521384, guid: 5b36cd64ded50014aa477bea53e4fb84, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Item/ItemUIData
+- AssemblyName: Assembly-CSharp
+  ClassName: SFX_Settings
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+Assets:
+- Assets/_Mod/LuckyBlock/LuckyBlock.prefab
+- Assets/_Mod/LuckyBlock/ItemContent.asset
+Dependencies: []
