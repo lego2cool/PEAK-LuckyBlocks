@@ -31,20 +31,48 @@ public static class Outcomes
         (Flag, 100),
         (Cannon, 100),
         (Cook, 100),
-        (Sunscreen, 100),
-        (Enderpearl, 100),
-        (SpawnErikTower, 100)
+        (Sunscreen, 100)
+//      (Enderpearl, 100),
+//      (SpawnErikTower, 100)
     };
 
     public static void TriggerRandom(LuckyBreakable lb, Collision coll)
     {
+        if (ActionWeights == null || ActionWeights.Count == 0)
+        {
+            return;
+        }
+
         int totalWeight = 0;
         foreach (var outcome in ActionWeights)
         {
-            totalWeight += outcome.weight;
+            if (outcome.weight > 0)
+            {
+                totalWeight += outcome.weight;
+            }
         }
 
+        if (totalWeight <= 0)
+        {
+            return;
+        }
 
+        int roll = UnityEngine.Random.Range(0, totalWeight);
+        foreach (var outcome in ActionWeights)
+        {
+            if (outcome.weight <= 0)
+            {
+                continue;
+            }
+
+            if (roll < outcome.weight)
+            {
+                outcome.action(lb, coll);
+                return;
+            }
+
+            roll -= outcome.weight;
+        }
     }
 
     public static void SpawnTornado(LuckyBreakable lb, Collision coll)
