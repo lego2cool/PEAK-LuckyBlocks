@@ -54,6 +54,7 @@ public partial class Plugin : BaseUnityPlugin
         breaking.breakOnCollision = true;
         breaking.minBreakVelocity = 10f;
 
+        // Makes the block more common
         var rarity = LBPrefab.GetComponent<LootData>();
         rarity.Rarity = LuckyBlockRarity.LuckyBlockDefault;
 
