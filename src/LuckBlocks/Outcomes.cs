@@ -290,7 +290,7 @@ public static class Outcomes
     public static void RopeSpawn(LuckyBreakable lb, Collision coll)
     {
         Quaternion quaternion = Quaternion.LookRotation(Vector3.forward, coll.contacts[0].normal);
-        GameObject rope = null;
+        GameObject? rope = null;
 
         switch (UnityEngine.Random.Range(0, 2))
         {
@@ -301,8 +301,11 @@ public static class Outcomes
                 rope = PhotonNetwork.Instantiate("RopeAnchorWithRope", coll.contacts[0].point, quaternion);
                 break;
         }
-        RopeAnchorWithRope anchor = rope.GetComponent<RopeAnchorWithRope>();
-        anchor.SpawnRope();
+        if (rope != null)
+        {
+            RopeAnchorWithRope anchor = rope.GetComponent<RopeAnchorWithRope>();
+            anchor.SpawnRope();
+        }
     }
 
     public static void ChaosCloud(LuckyBreakable lb, Collision coll)
@@ -429,6 +432,6 @@ public static class Outcomes
 
     public static void SpawnErikTower(LuckyBreakable lb, Collision coll)
     {
-        UnityEngine.Object.Instantiate(LuckyBlocks.Plugin.urchPrefab, coll.contacts[0].point, Quaternion.identity);
+        
     }
 }

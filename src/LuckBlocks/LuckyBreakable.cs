@@ -69,43 +69,43 @@ public class LuckyBreakable : MonoBehaviour
 	}
 
 	// Token: 0x040006E1 RID: 1761
-	public Item item;
+	public Item item = null!;
 
 	// Token: 0x040006E2 RID: 1762
-	public bool breakOnCollision;
+	public bool breakOnCollision = true;
 
 	// Token: 0x040006E3 RID: 1763
-	public float minBreakVelocity;
+	public float minBreakVelocity = 5f;
 
 	// Token: 0x040006E7 RID: 1767
-	public List<SFX_Instance> breakSFX;
+	public List<SFX_Instance> breakSFX = null!;
 
 	// Token: 0x040006E8 RID: 1768
-	public List<GameObject> instantiateNonItemOnBreak;
+	public List<GameObject> instantiateNonItemOnBreak = null!;
 
 	// Token: 0x040006E9 RID: 1769
-	public List<Transform> instantiatePoints;
+	public List<Transform> instantiatePoints = null!;
 
 	// Token: 0x040006EA RID: 1770
-	public bool spawnsItemsKinematic;
+	public bool spawnsItemsKinematic = false;
 
 	// Token: 0x040006EB RID: 1771
-	public bool playAnimationOnInstantiatedObject;
+	public bool playAnimationOnInstantiatedObject = false;
 
 	// Token: 0x040006EC RID: 1772
-	public string animString;
+	public string animString = null!;
 
 	// Token: 0x040006ED RID: 1773
-	public bool ragdollCharacterOnBreak;
+	public bool ragdollCharacterOnBreak = false;
 
 	// Token: 0x040006EE RID: 1774
-	private Rigidbody rig;
+	private Rigidbody rig = null!;
 
 	// Token: 0x040006EF RID: 1775
-	private bool alreadyBroke;
+	private bool alreadyBroke = false;
 
 	// Token: 0x040006F0 RID: 1776
-	private Vector3 lastVelocity;
+	private Vector3 lastVelocity = Vector3.zero;
 
 	// Token: 0x040006F1 RID: 1777
 	public float pushForce = 2f;
