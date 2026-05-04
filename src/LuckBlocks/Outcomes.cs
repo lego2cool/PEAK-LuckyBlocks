@@ -10,31 +10,36 @@ public static class Outcomes
     public static List<(Action<LuckyBreakable, Collision> action, int weight)> ActionWeights =
     new List<(Action<LuckyBreakable, Collision>, int)>
     {
-        (SpawnTornado, 100),
-        (SpawnLuggage, 100),
+        (SpawnTornado, 80),
+        (SpawnLuggage, 110),
         (SpawnBounce, 100),
-        (SpawnShelf, 100),
-        (LuckyRain, 100),
-        (SpawnEruption, 100),
+        (SpawnShelf, 90),
+        (LuckyRain, 75),
+        (SpawnEruption, 90),
         (PeelRain, 100),
-        (Explode, 100),
-        (ScorpoRain, 100),
+        (Explode, 80),
+        (ScorpoRain, 60),
         (BerryRain, 100),
-        (SummonScoutmaster, 100),
-        (RopeSpawn, 100),
+        (SummonScoutmaster, 50),
+        (RopeSpawn, 95),
         (ChaosCloud, 100),
-        (Zombie, 100),
-        (Backpacks, 100),
+        (Zombie, 70),
+        (Backpacks, 90),
         (PuffHealSpawn, 100),
         (EquipmentShower, 100),
-        (MythicSpawn, 100),
-        (Flag, 100),
-        (Cannon, 100),
-        (Cook, 100),
-        (Sunscreen, 100)
+        (MythicSpawn, 85),
+        (Flag, 90),
+        (Cannon, 95),
+        (Cook, 85),
+        (Sunscreen, 65)
 //      (Enderpearl, 100),
 //      (SpawnErikTower, 100)
     };
+
+    public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100)
+    {
+        ActionWeights.Add((action, weight));
+    }
 
     public static void TriggerRandom(LuckyBreakable lb, Collision coll)
     {
