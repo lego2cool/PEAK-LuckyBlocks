@@ -31,9 +31,9 @@ public static class Outcomes
         (Flag, 90),
         (Cannon, 95),
         (Cook, 85),
-        (Sunscreen, 65)
-//      (Enderpearl, 100),
-//      (SpawnErikTower, 100)
+        (Sunscreen, 65),
+        (Enderpearl, 100),
+//      (SpawnErikTower, 100),
     };
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100)
@@ -144,14 +144,12 @@ public static class Outcomes
 
     public static void Enderpearl(LuckyBreakable lb, Collision coll)
     {
-        Vector3 targetPos = coll.contacts[0].point + new Vector3(0f,5f,0f);
-
-        // Find the owner of this LuckyBlock
+        // Put teleport position one unit before the contact point so players aren't jammed into the contact surface
+        Vector3 targetPos = coll.contacts[0].point + coll.contacts[0].normal;
         Character owner = lb.item.lastThrownCharacter;
         if (owner != null)
         {
-            // Teleport player
-            owner.transform.position = targetPos;
+            owner.photonView.RPC("WarpPlayerRPC", RpcTarget.All, targetPos, true);
         }
     }
 
