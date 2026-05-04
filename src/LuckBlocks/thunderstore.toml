@@ -1,18 +1,20 @@
 [config]
-schemaVersion = "0.0.1"
+schemaVersion = "0.1.1"
 
 [general]
 repository = "https://thunderstore.io"
 
 [package]
 namespace = "legocool"
-name = "LuckBlocks"
-description = "TODO: Fill in short mod description."
-websiteUrl = "" # TODO: Add a link to your mod repository here (optional)
+name = "Lucky_Blocks"
+description = "Adds Lucky Blocks with randomized effects. Over 20 good and bad outcomes."
+websiteUrl = "https://github.com/lego2cool/PEAK-LuckyBlocks" 
 containsNsfwContent = false
 
 [package.dependencies]
 BepInEx-BepInExPack_PEAK = "5.4.2403"
+PEAKModding-PEAKLib_Items = "1.6.0"
+PEAKModding-PEAKLib_Core = "1.7.2"
 
 [build]
 icon = "../../icon.png"
@@ -30,6 +32,10 @@ target = "/"
 [[build.copy]]
 source = "../../LICENSE"
 target = "/"
+
+[[build.copy]]
+source = "../../bundles/luckyblock.peakbundle"
+target = "plugins/"
 
 # The following config options only apply when using TCLI to publish to Thunderstore directly:
 

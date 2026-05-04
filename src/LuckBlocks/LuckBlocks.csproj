@@ -6,9 +6,9 @@
     <!-- This is the GUID of your mod. Example: com.github.YourAccount.BepInExTemplate -->
     <AssemblyName>legocool.LuckyBlocks</AssemblyName>
     <!-- This is the display name of your mod. Example: BepInEx Template -->
-    <AssemblyTitle>LuckBlocks</AssemblyTitle>
+    <AssemblyTitle>Lucky_Blocks</AssemblyTitle>
     <!-- This is the version number of your mod. -->
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
