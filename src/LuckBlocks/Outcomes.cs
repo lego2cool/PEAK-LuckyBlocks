@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-
+using BepInEx.Configuration;
 
 
 public static class Outcomes
@@ -10,35 +10,55 @@ public static class Outcomes
     public static List<(Action<LuckyBreakable, Collision> action, int weight)> ActionWeights =
     new List<(Action<LuckyBreakable, Collision>, int)>
     {
-        (SpawnTornado, 80),
-        (SpawnLuggage, 110),
-        (SpawnBounce, 100),
-        (SpawnShelf, 90),
-        (LuckyRain, 75),
-        (SpawnEruption, 90),
-        (PeelRain, 100),
-        (Explode, 80),
-        (ScorpoRain, 60),
-        (BerryRain, 100),
-        (SummonScoutmaster, 50),
-        (RopeSpawn, 95),
-        (ChaosCloud, 100),
-        (Zombie, 70),
-        (Backpacks, 90),
-        (PuffHealSpawn, 100),
-        (EquipmentShower, 100),
-        (MythicSpawn, 85),
-        (Flag, 90),
-        (Cannon, 95),
-        (Cook, 85),
-        (Sunscreen, 65),
-        (Enderpearl, 100),
+        (SpawnTornado, LuckyBlocks.Config.TornadoWeight.Value),
+        (SpawnLuggage, LuckyBlocks.Config.LuggageWeight.Value),
+        (SpawnBounce, LuckyBlocks.Config.BounceWeight.Value),
+        (SpawnShelf, LuckyBlocks.Config.ShelfWeight.Value),
+        (LuckyRain, LuckyBlocks.Config.LuckyRainWeight.Value),
+        (SpawnEruption, LuckyBlocks.Config.EruptionWeight.Value),
+        (PeelRain, LuckyBlocks.Config.PeelRainWeight.Value),
+        (Explode, LuckyBlocks.Config.ExplodeWeight.Value),
+        (ScorpoRain, LuckyBlocks.Config.ScorpoRainWeight.Value),
+        (BerryRain, LuckyBlocks.Config.BerryRainWeight.Value),
+        (SummonScoutmaster, LuckyBlocks.Config.ScoutmasterWeight.Value),
+        (RopeSpawn, LuckyBlocks.Config.RopeSpawnWeight.Value),
+        (ChaosCloud, LuckyBlocks.Config.ChaosCloudWeight.Value),
+        (Zombie, LuckyBlocks.Config.ZombieWeight.Value),
+        (Backpacks, LuckyBlocks.Config.BackpacksWeight.Value),
+        (PuffHealSpawn, LuckyBlocks.Config.PuffHealSpawnWeight.Value),
+        (EquipmentShower, LuckyBlocks.Config.EquipmentShowerWeight.Value),
+        (MythicSpawn, LuckyBlocks.Config.MythicSpawnWeight.Value),
+        (Flag, LuckyBlocks.Config.FlagWeight.Value),
+        (Cannon, LuckyBlocks.Config.CannonWeight.Value),
+        (Cook, LuckyBlocks.Config.CookWeight.Value),
+        (Sunscreen, LuckyBlocks.Config.SunscreenWeight.Value),
+        (Enderpearl, LuckyBlocks.Config.EnderpearlWeight.Value),
 //      (SpawnErikTower, 100),
     };
 
-    public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100)
+    public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
     {
-        ActionWeights.Add((action, weight));
+        if (name == null)
+        {
+            name = action.Method.Name;
+        }
+
+        var enabledEntry = Config.Instance.Bind(
+            "Custom Outcomes",
+            $"{name} Enabled",
+            true,
+            $"Enable custom outcome: {name}");
+
+        var weightEntry = Config.Instance.Bind(
+            "Custom Outcomes",
+            $"{name} Weight",
+            weight,
+            $"Weight for custom outcome: {name}");
+
+        if (enabledEntry.Value)
+        {
+            ActionWeights.Add((action, weightEntry.Value));
+        }
     }
 
     public static void TriggerRandom(LuckyBreakable lb, Collision coll)
@@ -266,7 +286,8 @@ public static class Outcomes
                 UnityEngine.Random.Range(-3f, 3f)
             );
 
-            PhotonNetwork.Instantiate(prefabName, spawnPos, Quaternion.identity);
+            GameObject berry = PhotonNetwork.Instantiate(prefabName, spawnPos, Quaternion.identity);
+            berry.GetComponent<Rigidbody>().isKinematic = false; // Ensure gravity affects the berries
         }
     }
 
@@ -276,7 +297,7 @@ public static class Outcomes
         if (Scoutmaster.GetPrimaryScoutmaster(out scoutmaster))
         {
             // Move him to the block’s position
-            Vector3 spawnPos = coll.contacts[0].point;
+            Vector3 spawnPos = coll.contacts[0].point + coll.contacts[0].normal;
             float chaseTime = 30f;
 
             Character owner = lb.item.lastThrownCharacter;
@@ -285,7 +306,7 @@ public static class Outcomes
                 scoutmaster.SetCurrentTarget(owner, chaseTime); 
             }
 
-            scoutmaster.view.RPC("WarpPlayerRPC", RpcTarget.All, new object[] { spawnPos, false });
+            scoutmaster.view.RPC("WarpPlayerRPC", RpcTarget.All, targetPos, true);
             scoutmaster.view.RPC("StopClimbingRpc", RpcTarget.All, new object[] { 0f });
         }
     }

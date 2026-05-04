@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using BepInEx.Configuration;
 using PEAKLib.Items;
 using PEAKLib.Core;
 using PEAKLib.Items.UnityEditor;
@@ -39,6 +40,8 @@ public partial class Plugin : BaseUnityPlugin
         LocalizedText.mainTable["NAME_LUCKYBLOCK"][(int)LocalizedText.Language.SimplifiedChinese] = "幸运方块";
 
         LootData.RarityWeights.Add(LuckyBlockRarity.LuckyBlockDefault, 500);
+
+        BindAll();
 
         Log.LogInfo($"Plugin {Name} is loaded!");
     }
