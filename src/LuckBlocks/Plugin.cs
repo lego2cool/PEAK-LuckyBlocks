@@ -41,7 +41,9 @@ public partial class Plugin : BaseUnityPlugin
 
         LootData.RarityWeights.Add(LuckyBlockRarity.LuckyBlockDefault, 500);
 
-        BindAll();
+        LuckyBlocks.Config.Instance = base.Config;
+        LuckyBlocks.Config.BindAll();
+        Outcomes.Initialize();
 
         Log.LogInfo($"Plugin {Name} is loaded!");
     }

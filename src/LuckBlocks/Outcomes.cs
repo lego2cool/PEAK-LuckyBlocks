@@ -7,34 +7,37 @@ using BepInEx.Configuration;
 
 public static class Outcomes
 {
-    public static List<(Action<LuckyBreakable, Collision> action, int weight)> ActionWeights =
-    new List<(Action<LuckyBreakable, Collision>, int)>
+    public static List<(Action<LuckyBreakable, Collision> action, int weight)> ActionWeights = null!;
+
+    public static void Initialize()
     {
-        (SpawnTornado, LuckyBlocks.Config.TornadoWeight.Value),
-        (SpawnLuggage, LuckyBlocks.Config.LuggageWeight.Value),
-        (SpawnBounce, LuckyBlocks.Config.BounceWeight.Value),
-        (SpawnShelf, LuckyBlocks.Config.ShelfWeight.Value),
-        (LuckyRain, LuckyBlocks.Config.LuckyRainWeight.Value),
-        (SpawnEruption, LuckyBlocks.Config.EruptionWeight.Value),
-        (PeelRain, LuckyBlocks.Config.PeelRainWeight.Value),
-        (Explode, LuckyBlocks.Config.ExplodeWeight.Value),
-        (ScorpoRain, LuckyBlocks.Config.ScorpoRainWeight.Value),
-        (BerryRain, LuckyBlocks.Config.BerryRainWeight.Value),
-        (SummonScoutmaster, LuckyBlocks.Config.ScoutmasterWeight.Value),
-        (RopeSpawn, LuckyBlocks.Config.RopeSpawnWeight.Value),
-        (ChaosCloud, LuckyBlocks.Config.ChaosCloudWeight.Value),
-        (Zombie, LuckyBlocks.Config.ZombieWeight.Value),
-        (Backpacks, LuckyBlocks.Config.BackpacksWeight.Value),
-        (PuffHealSpawn, LuckyBlocks.Config.PuffHealSpawnWeight.Value),
-        (EquipmentShower, LuckyBlocks.Config.EquipmentShowerWeight.Value),
-        (MythicSpawn, LuckyBlocks.Config.MythicSpawnWeight.Value),
-        (Flag, LuckyBlocks.Config.FlagWeight.Value),
-        (Cannon, LuckyBlocks.Config.CannonWeight.Value),
-        (Cook, LuckyBlocks.Config.CookWeight.Value),
-        (Sunscreen, LuckyBlocks.Config.SunscreenWeight.Value),
-        (Enderpearl, LuckyBlocks.Config.EnderpearlWeight.Value),
-//      (SpawnErikTower, 100),
-    };
+        ActionWeights = new List<(Action<LuckyBreakable, Collision>, int)>
+        {
+            (SpawnTornado, LuckyBlocks.Config.TornadoWeight.Value),
+            (SpawnLuggage, LuckyBlocks.Config.LuggageWeight.Value),
+            (SpawnBounce, LuckyBlocks.Config.BounceWeight.Value),
+            (SpawnShelf, LuckyBlocks.Config.ShelfWeight.Value),
+            (LuckyRain, LuckyBlocks.Config.LuckyRainWeight.Value),
+            (SpawnEruption, LuckyBlocks.Config.EruptionWeight.Value),
+            (PeelRain, LuckyBlocks.Config.PeelRainWeight.Value),
+            (Explode, LuckyBlocks.Config.ExplodeWeight.Value),
+            (ScorpoRain, LuckyBlocks.Config.ScorpoRainWeight.Value),
+            (BerryRain, LuckyBlocks.Config.BerryRainWeight.Value),
+            (SummonScoutmaster, LuckyBlocks.Config.SummonScoutmasterWeight.Value),
+            (RopeSpawn, LuckyBlocks.Config.RopeSpawnWeight.Value),
+            (ChaosCloud, LuckyBlocks.Config.ChaosCloudWeight.Value),
+            (Zombie, LuckyBlocks.Config.ZombieWeight.Value),
+            (Backpacks, LuckyBlocks.Config.BackpacksWeight.Value),
+            (PuffHealSpawn, LuckyBlocks.Config.PuffHealSpawnWeight.Value),
+            (EquipmentShower, LuckyBlocks.Config.EquipmentShowerWeight.Value),
+            (MythicSpawn, LuckyBlocks.Config.MythicSpawnWeight.Value),
+            (Flag, LuckyBlocks.Config.FlagWeight.Value),
+            (Cannon, LuckyBlocks.Config.CannonWeight.Value),
+            (Cook, LuckyBlocks.Config.CookWeight.Value),
+            (Sunscreen, LuckyBlocks.Config.SunscreenWeight.Value),
+            (Enderpearl, LuckyBlocks.Config.EnderpearlWeight.Value),
+        };
+    }
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
     {
@@ -43,13 +46,13 @@ public static class Outcomes
             name = action.Method.Name;
         }
 
-        var enabledEntry = Config.Instance.Bind(
+        var enabledEntry = LuckyBlocks.Config.Instance.Bind(
             "Custom Outcomes",
             $"{name} Enabled",
             true,
             $"Enable custom outcome: {name}");
 
-        var weightEntry = Config.Instance.Bind(
+        var weightEntry = LuckyBlocks.Config.Instance.Bind(
             "Custom Outcomes",
             $"{name} Weight",
             weight,
@@ -306,7 +309,7 @@ public static class Outcomes
                 scoutmaster.SetCurrentTarget(owner, chaseTime); 
             }
 
-            scoutmaster.view.RPC("WarpPlayerRPC", RpcTarget.All, targetPos, true);
+            scoutmaster.view.RPC("WarpPlayerRPC", RpcTarget.All, spawnPos, true);
             scoutmaster.view.RPC("StopClimbingRpc", RpcTarget.All, new object[] { 0f });
         }
     }
