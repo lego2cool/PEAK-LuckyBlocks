@@ -1,5 +1,9 @@
 # Changelog
 
+## \[1.1.1] - 2026-05-03
+
+* My dumbass wrote the wrong version number
+
 ## \[1.1.0] - 2026-05-03
 
 ### Added
