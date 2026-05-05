@@ -57,13 +57,268 @@ If you come across any bugs or have feature suggestions, please post them in the
 * Scout Cannon Spawn
 * Portable Stove Spawn
 * Sunscreen Cloud
+* Teleport
 </details>
 
-## 🔧 Planned Features
+## ⚙️ Configuration
 
-* Config file
+A config file is auto-generated at: `BepInEx/config/legocool.LuckyBlocks.cfg`
 
-## How To Add Custom Outcomes
+**Note:** This configuration is host synced. All players will use the host's settings.
+
+You can edit these values:
+<details>
+<summary><strong>Config settings (spoilers - reveals all outcomes!)</strong></summary>
+
+<details>
+<summary><strong>Tornado</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Tornado Enabled` | Enable Spawn Tornado outcome | `true` |
+| `Spawn Tornado Weight` | Weight for Spawn Tornado | `80` |
+| `Tornado Min Lifetime` | Minimum lifetime for the tornado (in seconds) | `6` |
+| `Tornado Max Lifetime` | Maximum lifetime for the tornado (in seconds) | `10` |
+| `Tornado Force` | Force applied by the tornado | `50` |
+
+</details>
+
+<details>
+<summary><strong>Luggage</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Luggage Enabled` | Enable Spawn Luggage outcome | `true` |
+| `Spawn Luggage Weight` | Weight for Spawn Luggage | `110` |
+
+</details>
+
+<details>
+<summary><strong>Bounce Shroom</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Bounce Shroom Enabled` | Enable Spawn Bounce Shroom outcome | `true` |
+| `Spawn Bounce Shroom Weight` | Weight for Spawn Bounce Shroom | `100` |
+
+</details>
+
+<details>
+<summary><strong>Shelf Fungus</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Shelf Fungus Enabled` | Enable Spawn Shelf Fungus outcome | `true` |
+| `Spawn Shelf Fungus Weight` | Weight for Spawn Shelf Fungus | `90` |
+
+</details>
+
+<details>
+<summary><strong>Lucky Block Rain</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Lucky Block Rain Enabled` | Enable Lucky Block Rain outcome | `true` |
+| `Lucky Block Rain Weight` | Weight for Lucky Block Rain | `75` |
+| `Lucky Block Count` | Number of lucky blocks to spawn | `3` |
+
+</details>
+
+<details>
+<summary><strong>Eruption</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Eruption Enabled` | Enable Spawn Eruption outcome | `true` |
+| `Spawn Eruption Weight` | Weight for Spawn Eruption | `90` |
+
+</details>
+
+<details>
+<summary><strong>Berrynana Peel Rain</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Berrynana Peel Rain Enabled` | Enable Berrynana Peel Rain outcome | `true` |
+| `Berrynana Peel Rain Weight` | Weight for Berrynana Peel Rain | `100` |
+| `Grid Size` | Grid size for Berrynana Peel Rain (size of 5 = 5x5 grid or 25 peels) | `5` |
+| `Berrynana Peel Spacing` | Spacing between the peels | `1` |
+| `Berrynana Peel Lifetime` | Time before the peels despawn (in seconds) | `120` |
+
+</details>
+
+<details>
+<summary><strong>Explosion</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Explosion Enabled` | Enable Explosion outcome | `true` |
+| `Explosion Weight` | Weight for Explosion | `80` |
+
+</details>
+
+<details>
+<summary><strong>Scorpion Rain</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Scorpion Rain Enabled` | Enable Scorpion Rain outcome | `true` |
+| `Scorpion Rain Weight` | Weight for Scorpion Rain | `60` |
+| `Scorpion Count` | Number of scorpions to spawn | `3` |
+| `Scorpion Lifetime` | Time before scorpions despawn (in seconds) | `60` |
+
+</details>
+
+<details>
+<summary><strong>Berry Rain</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Berry Rain Enabled` | Enable Berry Rain outcome | `true` |
+| `Berry Rain Weight` | Weight for Berry Rain | `100` |
+| `Berry Count` | Number of berries to spawn | `4` |
+
+</details>
+
+<details>
+<summary><strong>Scoutmaster</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Scoutmaster Enabled` | Enable Spawn Scoutmaster outcome | `true` |
+| `Spawn Scoutmaster Weight` | Weight for Spawn Scoutmaster | `50` |
+
+</details>
+
+<details>
+<summary><strong>Rope/Anti Rope Spawn</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Rope/Anti Rope Spawn Enabled` | Enable Rope/Anti Rope Spawn outcome | `true` |
+| `Rope/Anti Rope Spawn Weight` | Weight for Rope/Anti Rope Spawn | `95` |
+
+</details>
+
+<details>
+<summary><strong>Chaos Cloud</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Chaos Cloud Enabled` | Enable Chaos Cloud outcome | `true` |
+| `Chaos Cloud Weight` | Weight for Chaos Cloud | `100` |
+
+</details>
+
+<details>
+<summary><strong>Zombie</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Zombie Enabled` | Enable Spawn Zombie outcome | `true` |
+| `Spawn Zombie Weight` | Weight for Spawn Zombie | `70` |
+| `Zombie Sprint Distance` | Distance at which the zombie starts sprinting | `30` |
+| `Zombie Lunge Distance` | Distance at which the zombie can lunge | `15` |
+| `Zombie Lunge Recovery Time` | Time it takes for the zombie to recover after lunging (in seconds) | `2` |
+| `Zombie Lifetime` | Time before the zombie dies (in seconds) | `90` |
+
+</details>
+
+<details>
+<summary><strong>Backpacks</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Backpack Spawn Enabled` | Enable Backpack Spawn outcome | `true` |
+| `Backpack Spawn Weight` | Weight for Backpack Spawn | `90` |
+| `Backpack Count` | Number of backpacks to spawn | `3` |
+
+</details>
+
+<details>
+<summary><strong>Remed Fungus Heal</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Remed Fungus Heal Spawn Enabled` | Enable Remed Fungus Heal Spawn outcome | `true` |
+| `Remed Fungus Heal Spawn Weight` | Weight for Remed Fungus Heal Spawn | `100` |
+
+</details>
+
+<details>
+<summary><strong>Equipment Shower</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Equipment Shower Enabled` | Enable Equipment Shower outcome | `true` |
+| `Equipment Shower Weight` | Weight for Equipment Shower | `100` |
+| `Equipment Count` | Number of equipment pieces to spawn | `4` |
+
+</details>
+
+<details>
+<summary><strong>Mythic Item Spawn</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Mythic Item Spawn Enabled` | Enable Mythic Item Spawn outcome | `true` |
+| `Mythic Item Spawn Weight` | Weight for Mythic Item Spawn | `85` |
+
+</details>
+
+<details>
+<summary><strong>Checkpoint Flag</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Checkpoint Flag Enabled` | Enable Checkpoint Flag outcome | `true` |
+| `Checkpoint Flag Weight` | Weight for Checkpoint Flag | `90` |
+
+</details>
+
+<details>
+<summary><strong>Scout Cannon</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Scout Cannon Spawn Enabled` | Enable Scout Cannon outcome | `true` |
+| `Scout Cannon Spawn Weight` | Weight for Scout Cannon | `95` |
+
+</details>
+
+<details>
+<summary><strong>Portable Pot</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Portable Pot Spawn Enabled` | Enable Portable Pot Spawn outcome | `true` |
+| `Portable Pot Spawn Weight` | Weight for Portable Pot Spawn | `85` |
+
+</details>
+
+<details>
+<summary><strong>Sunscreen Area</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Sunscreen Area Enabled` | Enable Sunscreen area outcome | `true` |
+| `Sunscreen Area Weight` | Weight for Sunscreen area | `65` |
+
+</details>
+
+<details>
+<summary><strong>Teleport</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Teleport Enabled` | Enable Teleport outcome | `true` |
+| `Teleport Weight` | Weight for Teleport | `80` |
+
+</details>
+
+</details>
+
+## 🔧 How To Add Custom Outcomes
 <details>
 <summary><strong>Adding custom outcomes allows you to give Lucky Blocks your own unique effects. This can be done by creating a new mod that depends on Lucky Blocks and registers additional outcome methods.</strong></summary>
 
@@ -95,7 +350,7 @@ public static void Enderpearl(LuckyBreakable lb, Collision coll)
 }
 ```
 ### Step 3: Register Your Outcome
-Call `Outcomes.AddOutcome()` with your method and a weight value. The weight determines how likely this outcome is to occur relative to other outcomes. Defaults to 100 if nothing is entered
+Call `Outcomes.AddOutcome()` with your method, a weight value, and optionaly a name. The weight determines how likely this outcome is to occur relative to other outcomes, Defaults to 100 if nothing is entered. The name is a optional paramater of how you want it to be refrenced in the config file, Defaults to method name if none is entered.
 
 * Higher weight = more common
 * Lower weight = rarer

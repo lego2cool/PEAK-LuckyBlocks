@@ -8,7 +8,7 @@
     <!-- This is the display name of your mod. Example: BepInEx Template -->
     <AssemblyTitle>Lucky_Blocks</AssemblyTitle>
     <!-- This is the version number of your mod. -->
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

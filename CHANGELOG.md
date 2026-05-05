@@ -1,5 +1,16 @@
 # Changelog
 
+## \[1.2.0] - 2026-05-05
+
+### Added 
+* Config file for disabling or editing outcomes
+* Optional `name` paramater to `Outcomes.AddOutcome` which is how the outcome is refrenced by in the configs.
+* New Teleport outcome which teleports you to where the block was thrown.
+
+### Fixes
+
+* Tornados no longer spam logs with errors
+
 ## \[1.1.1] - 2026-05-03
 
 * My dumbass wrote the wrong version number
