@@ -28,7 +28,12 @@ public partial class Plugin : BaseUnityPlugin
         _harmony = new Harmony("legocool.LuckBlock");
         _harmony.PatchAll();
         Log = Logger;
-
+        
+        // Initialize config
+        LuckyBlocks.Config.Instance = base.Config;
+        LuckyBlocks.Config.BindAll();
+        Outcomes.Initialize();
+        
         this.LoadBundleWithName(
             "luckyblock.peakbundle",InitLuckyBlock);
 
@@ -40,10 +45,6 @@ public partial class Plugin : BaseUnityPlugin
         LocalizedText.mainTable["NAME_LUCKYBLOCK"][(int)LocalizedText.Language.SimplifiedChinese] = "幸运方块";
 
         LootData.RarityWeights.Add(LuckyBlockRarity.LuckyBlockDefault, 500);
-
-        LuckyBlocks.Config.Instance = base.Config;
-        LuckyBlocks.Config.BindAll();
-        Outcomes.Initialize();
 
         Log.LogInfo($"Plugin {Name} is loaded!");
     }

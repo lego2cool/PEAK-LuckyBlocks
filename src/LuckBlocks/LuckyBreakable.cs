@@ -19,7 +19,7 @@ public class LuckyBreakable : MonoBehaviour
 	// Token: 0x06000758 RID: 1880 RVA: 0x00027A80 File Offset: 0x00025C80
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (!this.item.photonView.IsMine)
+		if (!PhotonNetwork.IsMasterClient)
 		{
 			return;
 		}

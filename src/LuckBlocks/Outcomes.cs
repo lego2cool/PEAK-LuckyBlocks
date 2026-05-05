@@ -11,32 +11,76 @@ public static class Outcomes
 
     public static void Initialize()
     {
-        ActionWeights = new List<(Action<LuckyBreakable, Collision>, int)>
-        {
-            (SpawnTornado, LuckyBlocks.Config.TornadoWeight.Value),
-            (SpawnLuggage, LuckyBlocks.Config.LuggageWeight.Value),
-            (SpawnBounce, LuckyBlocks.Config.BounceWeight.Value),
-            (SpawnShelf, LuckyBlocks.Config.ShelfWeight.Value),
-            (LuckyRain, LuckyBlocks.Config.LuckyRainWeight.Value),
-            (SpawnEruption, LuckyBlocks.Config.EruptionWeight.Value),
-            (PeelRain, LuckyBlocks.Config.PeelRainWeight.Value),
-            (Explode, LuckyBlocks.Config.ExplodeWeight.Value),
-            (ScorpoRain, LuckyBlocks.Config.ScorpoRainWeight.Value),
-            (BerryRain, LuckyBlocks.Config.BerryRainWeight.Value),
-            (SummonScoutmaster, LuckyBlocks.Config.SummonScoutmasterWeight.Value),
-            (RopeSpawn, LuckyBlocks.Config.RopeSpawnWeight.Value),
-            (ChaosCloud, LuckyBlocks.Config.ChaosCloudWeight.Value),
-            (Zombie, LuckyBlocks.Config.ZombieWeight.Value),
-            (Backpacks, LuckyBlocks.Config.BackpacksWeight.Value),
-            (PuffHealSpawn, LuckyBlocks.Config.PuffHealSpawnWeight.Value),
-            (EquipmentShower, LuckyBlocks.Config.EquipmentShowerWeight.Value),
-            (MythicSpawn, LuckyBlocks.Config.MythicSpawnWeight.Value),
-            (Flag, LuckyBlocks.Config.FlagWeight.Value),
-            (Cannon, LuckyBlocks.Config.CannonWeight.Value),
-            (Cook, LuckyBlocks.Config.CookWeight.Value),
-            (Sunscreen, LuckyBlocks.Config.SunscreenWeight.Value),
-            (Enderpearl, LuckyBlocks.Config.EnderpearlWeight.Value),
-        };
+        ActionWeights = new List<(Action<LuckyBreakable, Collision>, int)>();
+
+        if (LuckyBlocks.Config.TornadoEnabled.Value)
+            ActionWeights.Add((SpawnTornado, LuckyBlocks.Config.TornadoWeight.Value));
+        
+        if (LuckyBlocks.Config.LuggageEnabled.Value)
+            ActionWeights.Add((SpawnLuggage, LuckyBlocks.Config.LuggageWeight.Value));
+        
+        if (LuckyBlocks.Config.BounceEnabled.Value)
+            ActionWeights.Add((SpawnBounce, LuckyBlocks.Config.BounceWeight.Value));
+        
+        if (LuckyBlocks.Config.ShelfEnabled.Value)
+            ActionWeights.Add((SpawnShelf, LuckyBlocks.Config.ShelfWeight.Value));
+        
+        if (LuckyBlocks.Config.LuckyRainEnabled.Value)
+            ActionWeights.Add((LuckyRain, LuckyBlocks.Config.LuckyRainWeight.Value));
+        
+        if (LuckyBlocks.Config.EruptionEnabled.Value)
+            ActionWeights.Add((SpawnEruption, LuckyBlocks.Config.EruptionWeight.Value));
+        
+        if (LuckyBlocks.Config.PeelRainEnabled.Value)
+            ActionWeights.Add((PeelRain, LuckyBlocks.Config.PeelRainWeight.Value));
+        
+        if (LuckyBlocks.Config.ExplodeEnabled.Value)
+            ActionWeights.Add((Explode, LuckyBlocks.Config.ExplodeWeight.Value));
+        
+        if (LuckyBlocks.Config.ScorpoRainEnabled.Value)
+            ActionWeights.Add((ScorpoRain, LuckyBlocks.Config.ScorpoRainWeight.Value));
+        
+        if (LuckyBlocks.Config.BerryRainEnabled.Value)
+            ActionWeights.Add((BerryRain, LuckyBlocks.Config.BerryRainWeight.Value));
+        
+        if (LuckyBlocks.Config.SummonScoutmasterEnabled.Value)
+            ActionWeights.Add((SummonScoutmaster, LuckyBlocks.Config.SummonScoutmasterWeight.Value));
+        
+        if (LuckyBlocks.Config.RopeSpawnEnabled.Value)
+            ActionWeights.Add((RopeSpawn, LuckyBlocks.Config.RopeSpawnWeight.Value));
+        
+        if (LuckyBlocks.Config.ChaosCloudEnabled.Value)
+            ActionWeights.Add((ChaosCloud, LuckyBlocks.Config.ChaosCloudWeight.Value));
+        
+        if (LuckyBlocks.Config.ZombieEnabled.Value)
+            ActionWeights.Add((Zombie, LuckyBlocks.Config.ZombieWeight.Value));
+        
+        if (LuckyBlocks.Config.BackpacksEnabled.Value)
+            ActionWeights.Add((Backpacks, LuckyBlocks.Config.BackpacksWeight.Value));
+        
+        if (LuckyBlocks.Config.PuffHealSpawnEnabled.Value)
+            ActionWeights.Add((PuffHealSpawn, LuckyBlocks.Config.PuffHealSpawnWeight.Value));
+        
+        if (LuckyBlocks.Config.EquipmentShowerEnabled.Value)
+            ActionWeights.Add((EquipmentShower, LuckyBlocks.Config.EquipmentShowerWeight.Value));
+        
+        if (LuckyBlocks.Config.MythicSpawnEnabled.Value)
+            ActionWeights.Add((MythicSpawn, LuckyBlocks.Config.MythicSpawnWeight.Value));
+        
+        if (LuckyBlocks.Config.FlagEnabled.Value)
+            ActionWeights.Add((Flag, LuckyBlocks.Config.FlagWeight.Value));
+        
+        if (LuckyBlocks.Config.CannonEnabled.Value)
+            ActionWeights.Add((Cannon, LuckyBlocks.Config.CannonWeight.Value));
+        
+        if (LuckyBlocks.Config.CookEnabled.Value)
+            ActionWeights.Add((Cook, LuckyBlocks.Config.CookWeight.Value));
+        
+        if (LuckyBlocks.Config.SunscreenEnabled.Value)
+            ActionWeights.Add((Sunscreen, LuckyBlocks.Config.SunscreenWeight.Value));
+        
+        if (LuckyBlocks.Config.EnderpearlEnabled.Value)
+            ActionWeights.Add((Enderpearl, LuckyBlocks.Config.EnderpearlWeight.Value));
     }
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
@@ -107,9 +151,9 @@ public static class Outcomes
     {
         GameObject tornado = PhotonNetwork.Instantiate("Tornado", lb.item.Center(), Quaternion.identity);
         Tornado tornadoComponent = tornado.GetComponent<Tornado>();
-        tornadoComponent.tornadoLifetimeMax = 6f;
-        tornadoComponent.tornadoLifetimeMin = 10f;
-        tornadoComponent.force = 50;
+        tornadoComponent.tornadoLifetimeMax = LuckyBlocks.Config.TornadoMaxLifetime.Value;
+        tornadoComponent.tornadoLifetimeMin = LuckyBlocks.Config.TornadoMinLifetime.Value;
+        tornadoComponent.force = LuckyBlocks.Config.TornadoForce.Value;
     }
 
     public static void SpawnLuggage(LuckyBreakable lb, Collision coll)
@@ -148,7 +192,7 @@ public static class Outcomes
 
     public static void LuckyRain(LuckyBreakable lb, Collision coll)
     {
-        int count = 3; 
+        int count = LuckyBlocks.Config.LuckyRainCount.Value; 
     
             for (int i = 0; i < count; i++)
             {
@@ -193,8 +237,8 @@ public static class Outcomes
 
     public static void PeelRain(LuckyBreakable lb, Collision coll)
     {
-        int gridSize = 5; // 5x5 grid = 25 peels
-        float spacing = 1f; // Distance between peels
+        int gridSize = LuckyBlocks.Config.PeelRainGridSize.Value; // 5x5 grid = 25 peels
+        float spacing = LuckyBlocks.Config.PeelRainSpacing.Value; // Distance between peels
         float height = 6f; // Height to spawn at
 
         for (int x = 0; x < gridSize; x++)
@@ -211,7 +255,7 @@ public static class Outcomes
                 GameObject nana = PhotonNetwork.Instantiate("0_Items/Berrynana Peel Yellow", spawnPos, Quaternion.identity);
                 RemoveAfterSeconds remove = nana.AddComponent<RemoveAfterSeconds>();
                 remove.photonRemove = true;
-                remove.seconds = 120f;
+                remove.seconds = LuckyBlocks.Config.PeelRainLifetime.Value;
             }
         }
     }
@@ -227,7 +271,7 @@ public static class Outcomes
 
     public static void ScorpoRain(LuckyBreakable lb, Collision coll)
     {
-        int count = 3; 
+        int count = LuckyBlocks.Config.ScorpoRainCount.Value; 
     
             for (int i = 0; i < count; i++)
             {
@@ -241,13 +285,13 @@ public static class Outcomes
                 GameObject scorpion = PhotonNetwork.Instantiate("0_Items/Scorpion", spawnPos, Quaternion.identity);
                 RemoveAfterSeconds remove = scorpion.AddComponent<RemoveAfterSeconds>();
 				remove.photonRemove = true;
-				remove.seconds = 60f;
+				remove.seconds = LuckyBlocks.Config.ScorpoRainLifetime.Value;
             }
     }
 
     public static void BerryRain(LuckyBreakable lb, Collision coll)
     {
-        int count = 4;
+        int count = LuckyBlocks.Config.BerryRainCount.Value;
 
         // A pool of good/neutral item prefab names
         string[] itemPool = new string[]
@@ -346,16 +390,16 @@ public static class Outcomes
     {
         GameObject spawnedZombie = PhotonNetwork.Instantiate("MushroomZombie", lb.item.Center(), Quaternion.identity);
         MushroomZombie zombieComponent = spawnedZombie.GetComponent<MushroomZombie>();
-        zombieComponent.zombieSprintDistance = 30f;
-        zombieComponent.zombieLungeDistance = 15f;
-        zombieComponent.lungeRecoveryTime = 2f;
-        zombieComponent.lifetime = 90f;
+        zombieComponent.zombieSprintDistance = LuckyBlocks.Config.ZombieSprintDistance.Value;
+        zombieComponent.zombieLungeDistance = LuckyBlocks.Config.ZombieLungeDistance.Value;
+        zombieComponent.lungeRecoveryTime = LuckyBlocks.Config.ZombieLungeRecoveryTime.Value;
+        zombieComponent.lifetime = LuckyBlocks.Config.ZombieLifetime.Value;
         zombieComponent.currentState = MushroomZombie.State.Sleeping;
     }
 
     public static void Backpacks(LuckyBreakable lb, Collision coll)
     {
-        int count = 3;
+        int count = LuckyBlocks.Config.BackpackCount.Value;
 
         for (int i = 0; i < count; i++)
         {
@@ -379,7 +423,7 @@ public static class Outcomes
 
     public static void EquipmentShower(LuckyBreakable lb, Collision coll)
     {
-        int count = 4;
+        int count = LuckyBlocks.Config.EquipmentShowerCount.Value;
         string[] equipmentPool = new string[]
         {
             "0_Items/ChainShooter",
