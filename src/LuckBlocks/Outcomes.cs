@@ -85,22 +85,21 @@ public static class Outcomes
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
     {
-        if (name == null)
-        {
-            name = action.Method.Name;
-        }
+        name ??= action.Method.Name;
 
-        var enabledEntry = LuckyBlocks.Config.Instance.Bind(
-            "Custom Outcomes",
+        ConfigEntry<bool> enabledEntry = LuckyBlocks.Config.Instance.Bind(
+            $"Custom Outcomes.{name}",
             $"{name} Enabled",
             true,
             $"Enable custom outcome: {name}");
 
-        var weightEntry = LuckyBlocks.Config.Instance.Bind(
-            "Custom Outcomes",
+        ConfigEntry<int> weightEntry = LuckyBlocks.Config.Instance.Bind(
+            $"Custom Outcomes.{name}",
             $"{name} Weight",
             weight,
             $"Weight for custom outcome: {name}");
+
+        LuckyBlocks.Plugin.Log.LogInfo($"Adding outcome {name} with weight {weightEntry.Value}");
 
         if (enabledEntry.Value)
         {

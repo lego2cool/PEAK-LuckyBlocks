@@ -96,89 +96,89 @@ public static class Config
     public static void BindAll()
     {
         //Tornado
-        TornadoEnabled = Instance.Bind("Tornado", "Spawn Tornado Enabled", true, "Enable Spawn Tornado outcome");
-        TornadoWeight = Instance.Bind("Tornado", "Spawn Tornado Weight", 80, "Weight for Spawn Tornado");
-        TornadoMinLifetime = Instance.Bind("Tornado", "Tornado Min Lifetime", 6f, "Minimum lifetime for the tornado (in seconds)");
-        TornadoMaxLifetime = Instance.Bind("Tornado", "Tornado Max Lifetime", 10f, "Maximum lifetime for the tornado (in seconds)");
-        TornadoForce = Instance.Bind("Tornado", "Tornado Force", 50, "Force applied by the tornado");
+        TornadoEnabled = Instance.Bind("Outcomes.Tornado", "Spawn Tornado Enabled", true, "Enable Spawn Tornado outcome");
+        TornadoWeight = Instance.Bind("Outcomes.Tornado", "Spawn Tornado Weight", 80, "Weight for Spawn Tornado");
+        TornadoMinLifetime = Instance.Bind("Outcomes.Tornado", "Tornado Min Lifetime", 6f, "Minimum lifetime for the tornado (in seconds)");
+        TornadoMaxLifetime = Instance.Bind("Outcomes.Tornado", "Tornado Max Lifetime", 10f, "Maximum lifetime for the tornado (in seconds)");
+        TornadoForce = Instance.Bind("Outcomes.Tornado", "Tornado Force", 50, "Force applied by the tornado");
         //Luggage
-        LuggageEnabled = Instance.Bind("Luggage", "Spawn Luggage Enabled", true, "Enable Spawn Luggage outcome");
-        LuggageWeight = Instance.Bind("Luggage", "Spawn Luggage Weight", 110, "Weight for Spawn Luggage");
+        LuggageEnabled = Instance.Bind("Outcomes.Luggage", "Spawn Luggage Enabled", true, "Enable Spawn Luggage outcome");
+        LuggageWeight = Instance.Bind("Outcomes.Luggage", "Spawn Luggage Weight", 110, "Weight for Spawn Luggage");
         //Bounce Shroom
-        BounceEnabled = Instance.Bind("Bounce Shroom", "Spawn Bounce Shroom Enabled", true, "Enable Spawn Bounce Shroom outcome");
-        BounceWeight = Instance.Bind("Bounce Shroom", "Spawn Bounce Shroom Weight", 100, "Weight for Spawn Bounce Shroom");
+        BounceEnabled = Instance.Bind("Outcomes.Bounce Shroom", "Spawn Bounce Shroom Enabled", true, "Enable Spawn Bounce Shroom outcome");
+        BounceWeight = Instance.Bind("Outcomes.Bounce Shroom", "Spawn Bounce Shroom Weight", 100, "Weight for Spawn Bounce Shroom");
         //Shelf Fungus
-        ShelfEnabled = Instance.Bind("Shelf Fungus", "Spawn Shelf Fungus Enabled", true, "Enable Spawn Shelf Fungus outcome");
-        ShelfWeight = Instance.Bind("Shelf Fungus", "Spawn Shelf Fungus Weight", 90, "Weight for Spawn Shelf Fungus");
+        ShelfEnabled = Instance.Bind("Outcomes.Shelf Fungus", "Spawn Shelf Fungus Enabled", true, "Enable Spawn Shelf Fungus outcome");
+        ShelfWeight = Instance.Bind("Outcomes.Shelf Fungus", "Spawn Shelf Fungus Weight", 90, "Weight for Spawn Shelf Fungus");
         //Lucky Rain
-        LuckyRainEnabled = Instance.Bind("LuckyRain", "Lucky Block Rain Enabled", true, "Enable Lucky Block Rain outcome");
-        LuckyRainWeight = Instance.Bind("LuckyRain", "Lucky Block Rain Weight", 75, "Weight for Lucky Block Rain");
-        LuckyRainCount = Instance.Bind("LuckyRain", "Lucky Block Count", 3, "Number of lucky blocks to spawn");
+        LuckyRainEnabled = Instance.Bind("Outcomes.LuckyRain", "Lucky Block Rain Enabled", true, "Enable Lucky Block Rain outcome");
+        LuckyRainWeight = Instance.Bind("Outcomes.LuckyRain", "Lucky Block Rain Weight", 75, "Weight for Lucky Block Rain");
+        LuckyRainCount = Instance.Bind("Outcomes.LuckyRain", "Lucky Block Count", 3, "Number of lucky blocks to spawn");
         //Eruption
-        EruptionEnabled = Instance.Bind("Eruption", "Spawn Eruption Enabled", true, "Enable Spawn Eruption outcome");
-        EruptionWeight = Instance.Bind("Eruption", "Spawn Eruption Weight", 90, "Weight for Spawn Eruption");
+        EruptionEnabled = Instance.Bind("Outcomes.Eruption", "Spawn Eruption Enabled", true, "Enable Spawn Eruption outcome");
+        EruptionWeight = Instance.Bind("Outcomes.Eruption", "Spawn Eruption Weight", 90, "Weight for Spawn Eruption");
         //Berrynana Peel Rain
-        PeelRainEnabled = Instance.Bind("Berrynana Peel Rain", "Berrynana Peel Rain Enabled", true, "Enable Berrynana Peel Rain outcome");
-        PeelRainWeight = Instance.Bind("Berrynana Peel Rain", "Berrynana Peel Rain Weight", 100, "Weight for Berrynana Peel Rain");
-        PeelRainGridSize = Instance.Bind("Berrynana Peel Rain", "Grid Size", 5, "Grid size for Berrynana Peel Rain (size of 5 = 5x5 grid or 25 peels)");
-        PeelRainSpacing = Instance.Bind("Berrynana Peel Rain", "Berrynana Peel Spacing", 1f, "Spacing between the peels");
-        PeelRainLifetime = Instance.Bind("Berrynana Peel Rain", "Berrynana Peel Lifetime", 120f, "Time before the peels despawn (in seconds)");
+        PeelRainEnabled = Instance.Bind("Outcomes.Berrynana Peel Rain", "Berrynana Peel Rain Enabled", true, "Enable Berrynana Peel Rain outcome");
+        PeelRainWeight = Instance.Bind("Outcomes.Berrynana Peel Rain", "Berrynana Peel Rain Weight", 100, "Weight for Berrynana Peel Rain");
+        PeelRainGridSize = Instance.Bind("Outcomes.Berrynana Peel Rain", "Grid Size", 5, "Grid size for Berrynana Peel Rain (size of 5 = 5x5 grid or 25 peels)");
+        PeelRainSpacing = Instance.Bind("Outcomes.Berrynana Peel Rain", "Berrynana Peel Spacing", 1f, "Spacing between the peels");
+        PeelRainLifetime = Instance.Bind("Outcomes.Berrynana Peel Rain", "Berrynana Peel Lifetime", 120f, "Time before the peels despawn (in seconds)");
         //Explosion
-        ExplodeEnabled = Instance.Bind("Explosion", "Explosion Enabled", true, "Enable Explosion outcome");
-        ExplodeWeight = Instance.Bind("Explosion", "Explosion Weight", 80, "Weight for Explosion");
+        ExplodeEnabled = Instance.Bind("Outcomes.Explosion", "Explosion Enabled", true, "Enable Explosion outcome");
+        ExplodeWeight = Instance.Bind("Outcomes.Explosion", "Explosion Weight", 80, "Weight for Explosion");
         //Scorpion Rain
-        ScorpoRainEnabled = Instance.Bind("Scorpion Rain", "Scorpion Rain Enabled", true, "Enable Scorpion Rain outcome");
-        ScorpoRainWeight = Instance.Bind("Scorpion Rain", "Scorpion Rain Weight", 60, "Weight for Scorpion Rain");
-        ScorpoRainCount = Instance.Bind("Scorpion Rain", "Scorpion Count", 3, "Number of scorpions to spawn");
-        ScorpoRainLifetime = Instance.Bind("Scorpion Rain", "Scorpion Lifetime", 60f, "Time before scorpions despawn (in seconds)");
+        ScorpoRainEnabled = Instance.Bind("Outcomes.Scorpion Rain", "Scorpion Rain Enabled", true, "Enable Scorpion Rain outcome");
+        ScorpoRainWeight = Instance.Bind("Outcomes.Scorpion Rain", "Scorpion Rain Weight", 60, "Weight for Scorpion Rain");
+        ScorpoRainCount = Instance.Bind("Outcomes.Scorpion Rain", "Scorpion Count", 3, "Number of scorpions to spawn");
+        ScorpoRainLifetime = Instance.Bind("Outcomes.Scorpion Rain", "Scorpion Lifetime", 60f, "Time before scorpions despawn (in seconds)");
         //Berry Rain
-        BerryRainEnabled = Instance.Bind("Berry Rain", "Berry Rain Enabled", true, "Enable Berry Rain outcome");
-        BerryRainWeight = Instance.Bind("Berry Rain", "Berry Rain Weight", 100, "Weight for Berry Rain");
-        BerryRainCount = Instance.Bind("Berry Rain", "Berry Count", 4, "Number of berries to spawn");
+        BerryRainEnabled = Instance.Bind("Outcomes.Berry Rain", "Berry Rain Enabled", true, "Enable Berry Rain outcome");
+        BerryRainWeight = Instance.Bind("Outcomes.Berry Rain", "Berry Rain Weight", 100, "Weight for Berry Rain");
+        BerryRainCount = Instance.Bind("Outcomes.Berry Rain", "Berry Count", 4, "Number of berries to spawn");
         //Summon Scoutmaster
-        SummonScoutmasterEnabled = Instance.Bind("Scoutmaster", "Spawn Scoutmaster Enabled", true, "Enable Spawn Scoutmaster outcome");
-        SummonScoutmasterWeight = Instance.Bind("Scoutmaster", "Spawn Scoutmaster Weight", 50, "Weight for Spawn Scoutmaster");
+        SummonScoutmasterEnabled = Instance.Bind("Outcomes.Scoutmaster", "Spawn Scoutmaster Enabled", true, "Enable Spawn Scoutmaster outcome");
+        SummonScoutmasterWeight = Instance.Bind("Outcomes.Scoutmaster", "Spawn Scoutmaster Weight", 50, "Weight for Spawn Scoutmaster");
         //Rope/Anti Rope Spawn
-        RopeSpawnEnabled = Instance.Bind("Rope/Anti Rope Spawn", "Rope/Anti Rope Spawn Enabled", true, "Enable Rope/Anti Rope Spawn outcome");
-        RopeSpawnWeight = Instance.Bind("Rope/Anti Rope Spawn", "Rope/Anti Rope Spawn Weight", 95, "Weight for Rope/Anti Rope Spawn");
+        RopeSpawnEnabled = Instance.Bind("Outcomes.Rope/Anti Rope Spawn", "Rope/Anti Rope Spawn Enabled", true, "Enable Rope/Anti Rope Spawn outcome");
+        RopeSpawnWeight = Instance.Bind("Outcomes.Rope/Anti Rope Spawn", "Rope/Anti Rope Spawn Weight", 95, "Weight for Rope/Anti Rope Spawn");
         //Chaos Cloud
-        ChaosCloudEnabled = Instance.Bind("Chaos Cloud", "Chaos Cloud Enabled", true, "Enable Chaos Cloud outcome");
-        ChaosCloudWeight = Instance.Bind("Chaos Cloud", "Chaos Cloud Weight", 100, "Weight for Chaos Cloud");
+        ChaosCloudEnabled = Instance.Bind("Outcomes.Chaos Cloud", "Chaos Cloud Enabled", true, "Enable Chaos Cloud outcome");
+        ChaosCloudWeight = Instance.Bind("Outcomes.Chaos Cloud", "Chaos Cloud Weight", 100, "Weight for Chaos Cloud");
         //Zombie
-        ZombieEnabled = Instance.Bind("Zombie", "Spawn Zombie Enabled", true, "Enable Spawn Zombie outcome");
-        ZombieWeight = Instance.Bind("Zombie", "Spawn Zombie Weight", 70, "Weight for Spawn Zombie");
-        ZombieSprintDistance = Instance.Bind("Zombie", "Zombie Sprint Distance", 30f, "Distance at which the zombie starts sprinting");
-        ZombieLungeDistance = Instance.Bind("Zombie", "Zombie Lunge Distance", 15f, "Distance at which the zombie can lunge");
-        ZombieLungeRecoveryTime = Instance.Bind("Zombie", "Zombie Lunge Recovery Time", 2f, "Time it takes for the zombie to recover after lunging (in seconds)");
-        ZombieLifetime = Instance.Bind("Zombie", "Zombie Lifetime", 90f, "Time before the zombie dies (in seconds)");
+        ZombieEnabled = Instance.Bind("Outcomes.Zombie", "Spawn Zombie Enabled", true, "Enable Spawn Zombie outcome");
+        ZombieWeight = Instance.Bind("Outcomes.Zombie", "Spawn Zombie Weight", 70, "Weight for Spawn Zombie");
+        ZombieSprintDistance = Instance.Bind("Outcomes.Zombie", "Zombie Sprint Distance", 30f, "Distance at which the zombie starts sprinting");
+        ZombieLungeDistance = Instance.Bind("Outcomes.Zombie", "Zombie Lunge Distance", 15f, "Distance at which the zombie can lunge");
+        ZombieLungeRecoveryTime = Instance.Bind("Outcomes.Zombie", "Zombie Lunge Recovery Time", 2f, "Time it takes for the zombie to recover after lunging (in seconds)");
+        ZombieLifetime = Instance.Bind("Outcomes.Zombie", "Zombie Lifetime", 90f, "Time before the zombie dies (in seconds)");
         //Backpacks
-        BackpacksEnabled = Instance.Bind("Backpacks", "Backpack Spawn Enabled", true, "Enable Backpack Spawn outcome");
-        BackpacksWeight = Instance.Bind("Backpacks", "Backpack Spawn Weight", 90, "Weight for Backpack Spawn");
-        BackpackCount = Instance.Bind("Backpacks", "Backpack Count", 3, "Number of backpacks to spawn");
+        BackpacksEnabled = Instance.Bind("Outcomes.Backpacks", "Backpack Spawn Enabled", true, "Enable Backpack Spawn outcome");
+        BackpacksWeight = Instance.Bind("Outcomes.Backpacks", "Backpack Spawn Weight", 90, "Weight for Backpack Spawn");
+        BackpackCount = Instance.Bind("Outcomes.Backpacks", "Backpack Count", 3, "Number of backpacks to spawn");
         //Remed Fungus Heal
-        PuffHealSpawnEnabled = Instance.Bind("Remed Fungus Heal", "Remed Fungus Heal Spawn Enabled", true, "Enable Remed Fungus Heal Spawn outcome");
-        PuffHealSpawnWeight = Instance.Bind("Remed Fungus Heal", "Remed Fungus Heal Spawn Weight", 100, "Weight for Remed Fungus Heal Spawn");
+        PuffHealSpawnEnabled = Instance.Bind("Outcomes.Remed Fungus Heal", "Remed Fungus Heal Spawn Enabled", true, "Enable Remed Fungus Heal Spawn outcome");
+        PuffHealSpawnWeight = Instance.Bind("Outcomes.Remed Fungus Heal", "Remed Fungus Heal Spawn Weight", 100, "Weight for Remed Fungus Heal Spawn");
         //Equipment Shower
-        EquipmentShowerEnabled = Instance.Bind("Equipment Shower", "Equipment Shower Enabled", true, "Enable Equipment Shower outcome");
-        EquipmentShowerWeight = Instance.Bind("Equipment Shower", "Equipment Shower Weight", 100, "Weight for Equipment Shower");
-        EquipmentShowerCount = Instance.Bind("Equipment Shower", "Equipment Count", 4, "Number of equipment pieces to spawn");
+        EquipmentShowerEnabled = Instance.Bind("Outcomes.Equipment Shower", "Equipment Shower Enabled", true, "Enable Equipment Shower outcome");
+        EquipmentShowerWeight = Instance.Bind("Outcomes.Equipment Shower", "Equipment Shower Weight", 100, "Weight for Equipment Shower");
+        EquipmentShowerCount = Instance.Bind("Outcomes.Equipment Shower", "Equipment Count", 4, "Number of equipment pieces to spawn");
         //Mythic Item Spawn
-        MythicSpawnEnabled = Instance.Bind("Mythic Item Spawn", "Mythic Item Spawn Enabled", true, "Enable Mythic Item Spawn outcome");
-        MythicSpawnWeight = Instance.Bind("Mythic Item Spawn", "Mythic Item Spawn Weight", 85, "Weight for Mythic Item Spawn");
+        MythicSpawnEnabled = Instance.Bind("Outcomes.Mythic Item Spawn", "Mythic Item Spawn Enabled", true, "Enable Mythic Item Spawn outcome");
+        MythicSpawnWeight = Instance.Bind("Outcomes.Mythic Item Spawn", "Mythic Item Spawn Weight", 85, "Weight for Mythic Item Spawn");
         //Checkpoint Flag
-        FlagEnabled = Instance.Bind("Checkpoint Flag", "Checkpoint Flag Enabled", true, "Enable Checkpoint Flag outcome");
-        FlagWeight = Instance.Bind("Checkpoint Flag", "Checkpoint Flag Weight", 90, "Weight for Checkpoint Flag");
+        FlagEnabled = Instance.Bind("Outcomes.Checkpoint Flag", "Checkpoint Flag Enabled", true, "Enable Checkpoint Flag outcome");
+        FlagWeight = Instance.Bind("Outcomes.Checkpoint Flag", "Checkpoint Flag Weight", 90, "Weight for Checkpoint Flag");
         //Scout Cannon
-        CannonEnabled = Instance.Bind("Scout Cannon", "Scout Cannon Spawn Enabled", true, "Enable Scout Cannon outcome");
-        CannonWeight = Instance.Bind("Scout Cannon", "Scout Cannon Spawn Weight", 95, "Weight for Scout Cannon");
+        CannonEnabled = Instance.Bind("Outcomes.Scout Cannon", "Scout Cannon Spawn Enabled", true, "Enable Scout Cannon outcome");
+        CannonWeight = Instance.Bind("Outcomes.Scout Cannon", "Scout Cannon Spawn Weight", 95, "Weight for Scout Cannon");
         //Portable Pot
-        CookEnabled = Instance.Bind("Portable Pot", "Portable Pot Spawn Enabled", true, "Enable Portable Pot Spawn outcome");
-        CookWeight = Instance.Bind("Portable Pot", "Portable Pot Spawn Weight", 85, "Weight for Portable Pot Spawn");
+        CookEnabled = Instance.Bind("Outcomes.Portable Pot", "Portable Pot Spawn Enabled", true, "Enable Portable Pot Spawn outcome");
+        CookWeight = Instance.Bind("Outcomes.Portable Pot", "Portable Pot Spawn Weight", 85, "Weight for Portable Pot Spawn");
         //Sunscreen Area
-        SunscreenEnabled = Instance.Bind("Sunscreen Area", "Sunscreen Area Enabled", true, "Enable Sunscreen area outcome");
-        SunscreenWeight = Instance.Bind("Sunscreen Area", "Sunscreen Area Weight", 65, "Weight for Sunscreen area");
+        SunscreenEnabled = Instance.Bind("Outcomes.Sunscreen Area", "Sunscreen Area Enabled", true, "Enable Sunscreen area outcome");
+        SunscreenWeight = Instance.Bind("Outcomes.Sunscreen Area", "Sunscreen Area Weight", 65, "Weight for Sunscreen area");
         //Teleport
-        EnderpearlEnabled = Instance.Bind("Teleport", "Teleport Enabled", true, "Enable Teleport outcome");
-        EnderpearlWeight = Instance.Bind("Teleport", "Teleport Weight", 80, "Weight for Teleport");
+        EnderpearlEnabled = Instance.Bind("Outcomes.Teleport", "Teleport Enabled", true, "Enable Teleport outcome");
+        EnderpearlWeight = Instance.Bind("Outcomes.Teleport", "Teleport Weight", 80, "Weight for Teleport");
     }
 }

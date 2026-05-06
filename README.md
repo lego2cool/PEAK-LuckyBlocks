@@ -1,8 +1,8 @@
 # Lucky Blocks
 
-**Lucky Blocks** can be found around the map in various locations such as in trees, on bushes, or inside of luggage. Smash them open by throwing it at the ground, but be careful, or something bad might pop out!
+**Lucky Blocks** can be found around the map in various locations such as in trees, on bushes, or inside of luggage. Smash them open by throwing one at the ground, but be careful, or something bad might pop out!
 
-If you come across any bugs or have feature suggestions, please post them in the thread posted on the mod-releases section on the [PEAK Modding discord server](https://discord.gg/SAw86z24rB).
+If you come across any bugs or have feature suggestions, please post them in the thread posted on the mod-releases section in the [PEAK Modding discord server](https://discord.gg/SAw86z24rB) or as an issue in the GitHub page.
 
 ## ✨ Features
 
@@ -64,11 +64,12 @@ If you come across any bugs or have feature suggestions, please post them in the
 
 A config file is auto-generated at: `BepInEx/config/legocool.LuckyBlocks.cfg`
 
-**Note:** This configuration is host synced. All players will use the host's settings.
+The config is synced by the host to other players. If changes are made to the config, the game **must** be reloaded for the changes to take effect. Supports outcomes added by other mods, allowing you to enable/disable it and change its weight.
 
 You can edit these values:
+
 <details>
-<summary><strong>Config settings (spoilers - reveals all outcomes!)</strong></summary>
+<summary><strong>Config settings (spoilers - reveals outcomes!)</strong></summary>
 
 <details>
 <summary><strong>Tornado</strong></summary>
@@ -350,7 +351,7 @@ public static void Enderpearl(LuckyBreakable lb, Collision coll)
 }
 ```
 ### Step 3: Register Your Outcome
-Call `Outcomes.AddOutcome()` with your method, a weight value, and optionaly a name. The weight determines how likely this outcome is to occur relative to other outcomes, Defaults to 100 if nothing is entered. The name is a optional paramater of how you want it to be refrenced in the config file, Defaults to method name if none is entered.
+Call `Outcomes.AddOutcome()` with your method, a weight value, and optionally a name. The weight determines how likely this outcome is to occur relative to other outcomes, Defaults to 100 if nothing is entered. The name is a optional parameter of how you want it to be referenced in the config file, defaults to method name if none is entered.
 
 * Higher weight = more common
 * Lower weight = rarer
