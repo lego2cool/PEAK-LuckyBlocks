@@ -68,6 +68,13 @@ public class LuckyBreakable : MonoBehaviour
 		PhotonNetwork.Destroy(base.gameObject);
 	}
 
+	[PunRPC]
+	public void RPC_SpawnPrefab(string prefabName, Vector3 position, Quaternion rotation)
+    {
+		GameObject prefab = GetIslandStuff.EruptionPrefab; // Replace with your actual prefab reference
+		UnityEngine.Object.Instantiate<GameObject>(prefab, position, rotation);
+    }
+
 	// Token: 0x040006E1 RID: 1761
 	public Item item = null!;
 

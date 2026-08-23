@@ -1,5 +1,16 @@
 # Changelog
 
+##\[1.3.0] - Unreleased
+
+### Added
+* 5+ new Outcomes!
+* Blocks now spawn in Goom and Citadel luggages
+* Blocks now spawn in Clown luggages
+* AntiZooka and Ritual Dagger have been added to Mythic Spawn item pool.
+
+### Fixes
+* Eruptions now work regardless of if Caldera is in rotation.
+
 ## \[1.2.0] - 2026-05-05
 
 ### Added 

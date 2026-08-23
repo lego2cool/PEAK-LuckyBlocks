@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using BepInEx.Configuration;
 
 
-public static class Outcomes
+public class Outcomes
 {
     public static List<(Action<LuckyBreakable, Collision> action, int weight)> ActionWeights = null!;
 
@@ -81,6 +82,21 @@ public static class Outcomes
         
         if (LuckyBlocks.Config.EnderpearlEnabled.Value)
             ActionWeights.Add((Enderpearl, LuckyBlocks.Config.EnderpearlWeight.Value));
+
+        if (LuckyBlocks.Config.FrogEnabled.Value)
+            ActionWeights.Add((FROG, LuckyBlocks.Config.FrogWeight.Value));
+        
+        if (LuckyBlocks.Config.GhostBallEnabled.Value)
+            ActionWeights.Add((SpawnGhostBallGuyThing, LuckyBlocks.Config.GhostBallWeight.Value));
+        
+        if (LuckyBlocks.Config.MimicLuggageEnabled.Value)
+            ActionWeights.Add((MimicLuggage, LuckyBlocks.Config.MimicLuggageWeight.Value));
+        
+        if (LuckyBlocks.Config.ShellRainEnabled.Value)
+            ActionWeights.Add((ShellParty, LuckyBlocks.Config.ShellRainWeight.Value));
+
+        if (LuckyBlocks.Config.SporeExplosionEnabled.Value)
+            ActionWeights.Add((SpawnSporeExplosion, LuckyBlocks.Config.SporeExplosionWeight.Value));
     }
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
@@ -138,7 +154,8 @@ public static class Outcomes
 
             if (roll < outcome.weight)
             {
-                outcome.action(lb, coll);
+                SpawnEruption(lb, coll);
+                //outcome.action(lb, coll);
                 return;
             }
 
@@ -172,6 +189,9 @@ public static class Outcomes
                 break;
             case 3:
                 PhotonNetwork.Instantiate("0_Items/LuggageAncient", coll.contacts[0].point, quaternion);
+                break;
+            case 4:
+                PhotonNetwork.Instantiate("0_Items/LuggageClown", coll.contacts[0].point, quaternion);
                 break;
         }
     }
@@ -221,16 +241,7 @@ public static class Outcomes
 
     public static void SpawnEruption(LuckyBreakable lb, Collision coll)
     {
-        EruptionSpawner eruption_spawner = UnityEngine.Object.FindAnyObjectByType<EruptionSpawner>();
-
-        // Use the block's position when it breaks
-        Vector3 spawnPos = coll.contacts[0].point;
-
-        eruption_spawner.photonView.RPC(
-            "RPCA_SpawnEruption",
-            RpcTarget.All, // broadcast to everyone
-            new object[] { spawnPos }
-        );
+        lb.item.view.RPC("RPC_SpawnPrefab", RpcTarget.All, new object[] { "Eruption", coll.contacts[0].point, Quaternion.LookRotation(Vector3.up) });
 
     }
 
@@ -463,7 +474,9 @@ public static class Outcomes
             "0_Items/PandorasBox",
             "0_Items/RopeShooterAnti",
             "0_Items/ScoutEffigy",
-            "0_Items/Warp Compass"
+            "0_Items/Warp Compass",
+            "0_Items/RitualDagger",
+            "0_Items/AntiZooka",
         };
 
         // Random item from pool
@@ -500,8 +513,64 @@ public static class Outcomes
         flagCompo.Initialize(lb.item.lastThrownCharacter);
     }
 
-    public static void SpawnErikTower(LuckyBreakable lb, Collision coll)
+    public static void FROG(LuckyBreakable lb, Collision coll)
+    {
+        int count = LuckyBlocks.Config.FrogCount.Value;
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject frog = PhotonNetwork.Instantiate("0_Items/Frog", coll.contacts[0].point, Quaternion.identity, 0, null);
+            RemoveAfterSeconds remove = frog.AddComponent<RemoveAfterSeconds>();
+            remove.photonRemove = true;
+            remove.seconds = LuckyBlocks.Config.FrogLifetime.Value;
+        }
+    }
+
+    public static void SpawnGhostBallGuyThing(LuckyBreakable lb, Collision coll)
+    {
+        GameObject ghostBallGuy = PhotonNetwork.Instantiate("GhostBall", lb.item.Center(), Quaternion.identity);
+        Peak.GhostBall ghostBallGuyComponent = ghostBallGuy.GetComponent<Peak.GhostBall>();
+        ghostBallGuyComponent.lifetime = LuckyBlocks.Config.GhostBallLifetime.Value;
+    }
+
+    public static void SpawnSporeExplosion(LuckyBreakable lb, Collision coll)
     {
         
     }
+    
+    public static void MimicLuggage(LuckyBreakable lb, Collision coll)
+    {
+        Quaternion quaternion = Quaternion.LookRotation(Vector3.forward, coll.contacts[0].normal);
+        PhotonNetwork.Instantiate("0_Items/LuggageTrick", coll.contacts[0].point, quaternion, 0, null);
+    }
+
+    public static void ShellParty(LuckyBreakable lb, Collision coll)
+    {
+        int count = LuckyBlocks.Config.ShellRainCount.Value;
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPos = coll.contacts[0].point + new Vector3(
+                UnityEngine.Random.Range(-2f, 2f),
+                UnityEngine.Random.Range(3f, 6f),
+                UnityEngine.Random.Range(-2f, 2f)
+            );
+
+            // Spawn the Shell prefab again
+            PhotonNetwork.Instantiate("0_Items/Shell Big", spawnPos, Quaternion.identity);
+        }
+    }
+
+    public static void AntiGravSphere(LuckyBreakable lb, Collision coll)
+    {
+        Quaternion quaternion = Quaternion.LookRotation(Vector3.forward, coll.contacts[0].normal);
+        GameObject antiGravSphere = PhotonNetwork.Instantiate("AntiSphere_Projectile", coll.contacts[0].point, quaternion, 0, null);
+        Peak.AntiSphere antiSphereComponent = antiGravSphere.GetComponent<Peak.AntiSphere>();
+        antiSphereComponent.lifetime = LuckyBlocks.Config.AntiGravSphereLifetime.Value;
+    }
+
+    
+
+    
 }
+

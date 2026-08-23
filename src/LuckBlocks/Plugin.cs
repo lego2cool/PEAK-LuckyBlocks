@@ -5,7 +5,9 @@ using PEAKLib.Items;
 using PEAKLib.Core;
 using PEAKLib.Items.UnityEditor;
 using HarmonyLib;
+using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 namespace LuckyBlocks;
@@ -23,11 +25,14 @@ public partial class Plugin : BaseUnityPlugin
     internal static ManualLogSource Log { get; private set; } = null!;
     private Harmony _harmony = null!;
 
+
     private void Awake()
     {
         _harmony = new Harmony("legocool.LuckBlock");
         _harmony.PatchAll();
         Log = Logger;
+
+        
         
         // Initialize config
         LuckyBlocks.Config.Instance = base.Config;
@@ -65,6 +70,22 @@ public partial class Plugin : BaseUnityPlugin
         rarity.Rarity = LuckyBlockRarity.LuckyBlockDefault;
 
         bundle.Mod.RegisterContent();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Re-Initialize config settings when a new scene is loaded, in case the config was changed while the game was running.
+        Outcomes.Initialize();
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
 

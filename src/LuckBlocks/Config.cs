@@ -92,6 +92,29 @@ public static class Config
     //Teleport
     public static ConfigEntry<bool> EnderpearlEnabled = null!;
     public static ConfigEntry<int> EnderpearlWeight = null!;
+    //Frog
+    public static ConfigEntry<bool> FrogEnabled = null!;
+    public static ConfigEntry<int> FrogWeight = null!;
+    public static ConfigEntry<int> FrogCount = null!;
+    public static ConfigEntry<float> FrogLifetime = null!;
+    //Ghost Ball
+    public static ConfigEntry<bool> GhostBallEnabled = null!;
+    public static ConfigEntry<int> GhostBallWeight = null!;
+    public static ConfigEntry<float> GhostBallLifetime = null!;
+    //Luggage Mimic
+    public static ConfigEntry<bool> MimicLuggageEnabled = null!;
+    public static ConfigEntry<int> MimicLuggageWeight = null!;
+    //Spore Explosion
+    public static ConfigEntry<bool> SporeExplosionEnabled = null!;
+    public static ConfigEntry<int> SporeExplosionWeight = null!;
+    //ShellParty
+    public static ConfigEntry<bool> ShellRainEnabled = null!;
+    public static ConfigEntry<int> ShellRainWeight = null!;
+    public static ConfigEntry<int> ShellRainCount = null!;
+    //Anti Gravity Sphere
+    public static ConfigEntry<bool> AntiGravSphereEnabled = null!;
+    public static ConfigEntry<int> AntiGravSphereWeight = null!;
+    public static ConfigEntry<float> AntiGravSphereLifetime = null!;
 
     public static void BindAll()
     {
@@ -136,7 +159,7 @@ public static class Config
         BerryRainWeight = Instance.Bind("Outcomes.Berry Rain", "Berry Rain Weight", 100, "Weight for Berry Rain");
         BerryRainCount = Instance.Bind("Outcomes.Berry Rain", "Berry Count", 4, "Number of berries to spawn");
         //Summon Scoutmaster
-        SummonScoutmasterEnabled = Instance.Bind("Outcomes.Scoutmaster", "Spawn Scoutmaster Enabled", true, "Enable Spawn Scoutmaster outcome");
+        SummonScoutmasterEnabled = Instance.Bind("Outcomes.Scoutmaster", "Spawn Scoutmaster Enabled", false, "Enable Spawn Scoutmaster outcome");
         SummonScoutmasterWeight = Instance.Bind("Outcomes.Scoutmaster", "Spawn Scoutmaster Weight", 50, "Weight for Spawn Scoutmaster");
         //Rope/Anti Rope Spawn
         RopeSpawnEnabled = Instance.Bind("Outcomes.Rope/Anti Rope Spawn", "Rope/Anti Rope Spawn Enabled", true, "Enable Rope/Anti Rope Spawn outcome");
@@ -180,5 +203,28 @@ public static class Config
         //Teleport
         EnderpearlEnabled = Instance.Bind("Outcomes.Teleport", "Teleport Enabled", true, "Enable Teleport outcome");
         EnderpearlWeight = Instance.Bind("Outcomes.Teleport", "Teleport Weight", 80, "Weight for Teleport");
+        //Frog
+        FrogEnabled = Instance.Bind("Outcomes.Frog", "Frog Spawn Enabled", true, "Enable Frog Spawn outcome");
+        FrogWeight = Instance.Bind("Outcomes.Frog", "Frog Spawn Weight", 100, "Weight for Frog Spawn");
+        FrogCount = Instance.Bind("Outcomes.Frog", "Frog Count", 2 , "Number of frogs to spawn");
+        FrogLifetime = Instance.Bind("Outcomes.Frog", "Frog Lifetime", 60f, "Time before frogs despawn (in seconds)");
+        //Ghost Ball
+        GhostBallEnabled = Instance.Bind("Outcomes.Ghost Ball", "Ghost Ball Spawn Enabled", true, "Enable Ghost Ball outcome");
+        GhostBallWeight = Instance.Bind("Outcomes.Ghost Ball", "Ghost Ball Spawn Weight", 75, "Weight for Ghost Ball Spawn");
+        GhostBallLifetime = Instance.Bind("Outcomes.Ghost Ball", "Ghost Ball Lifetime", 30f, "Time before ghost ball despawns (in seconds)");
+        //Luggage Mimic
+        MimicLuggageEnabled = Instance.Bind("Outcomes.Luggage Mimic", "Luggage Mimic Spawn Enabled", true, "Enable Luggage Mimic outcome");
+        MimicLuggageWeight = Instance.Bind("Outcomes.Luggage Mimic", "Luggage Mimic Spawn Weight", 75, "Weight for Luggage Mimic Spawn");
+        //Spore Explosion
+        SporeExplosionEnabled = Instance.Bind("Outcomes.Spore Explosion", "Spore Explosion Enabled", true, "Enable Spore Explosion outcome");
+        SporeExplosionWeight = Instance.Bind("Outcomes.Spore Explosion", "Spore Explosion Weight", 60, "Weight for Spore Explosion");
+        //ShellParty
+        ShellRainEnabled = Instance.Bind("Outcomes.ShellParty", "Shell Party Enabled", true, "Enable Shell Party outcome");
+        ShellRainWeight = Instance.Bind("Outcomes.ShellParty", "Shell Party Weight", 100, "Weight for Shell Party");
+        ShellRainCount = Instance.Bind("Outcomes.ShellParty", "Shell Party Count", 5, "Number of shells to spawn");
+        //Anti Gravity Sphere
+        AntiGravSphereEnabled = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Enabled", true, "Enable Anti Gravity Sphere outcome");
+        AntiGravSphereWeight = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Weight", 80, "Weight for Anti Gravity Sphere");
+        AntiGravSphereLifetime = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Lifetime", 10f, "Time before Anti Gravity Sphere despawns (in seconds)");
     }
 }
