@@ -6,6 +6,10 @@ public static class Config
 {
     public static ConfigFile Instance = null!;
 
+    //Debug Config
+    public static ConfigEntry<bool> DebugMode = null!;
+    public static ConfigEntry<string> ForcedOutcome = null!;    
+
     // Config entries for built-in outcomes
     //Tornado
     public static ConfigEntry<bool> TornadoEnabled = null!;
@@ -226,5 +230,17 @@ public static class Config
         AntiGravSphereEnabled = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Enabled", true, "Enable Anti Gravity Sphere outcome");
         AntiGravSphereWeight = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Weight", 80, "Weight for Anti Gravity Sphere");
         AntiGravSphereLifetime = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Lifetime", 60f, "Time before Anti Gravity Sphere despawns (in seconds)");
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        //Debug Config
+        DebugMode = Instance.Bind("Debug", "Debug Mode", false, "Always trigger the selected outcome");
+        ForcedOutcome = Instance.Bind("Debug", "Forced Outcome", "", "Outcome method name to trigger");
     }
 }

@@ -130,6 +130,26 @@ public class Outcomes
             return;
         }
 
+        if (LuckyBlocks.Config.DebugMode.Value && !string.IsNullOrWhiteSpace(LuckyBlocks.Config.ForcedOutcome.Value))
+        {
+            string forcedOutcome = LuckyBlocks.Config.ForcedOutcome.Value.Trim();
+
+            foreach (var outcome in ActionWeights)
+            {
+                if (string.Equals(
+                        outcome.action.Method.Name,
+                        forcedOutcome,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    outcome.action(lb, coll);
+                    return;
+                }
+            }
+
+            LuckyBlocks.Plugin.Log.LogWarning(
+                $"Could not find forced outcome '{forcedOutcome}'. Using random outcome.");
+        }
+
         int totalWeight = 0;
         foreach (var outcome in ActionWeights)
         {
@@ -154,8 +174,7 @@ public class Outcomes
 
             if (roll < outcome.weight)
             {
-                SpawnEruption(lb, coll);
-                //outcome.action(lb, coll);
+                outcome.action(lb, coll);
                 return;
             }
 
@@ -569,7 +588,7 @@ public class Outcomes
         antiSphereComponent.lifetime = LuckyBlocks.Config.AntiGravSphereLifetime.Value;
     }
 
-    
+
 
     
 }
