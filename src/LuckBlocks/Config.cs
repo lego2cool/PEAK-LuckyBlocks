@@ -225,6 +225,6 @@ public static class Config
         //Anti Gravity Sphere
         AntiGravSphereEnabled = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Enabled", true, "Enable Anti Gravity Sphere outcome");
         AntiGravSphereWeight = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Weight", 80, "Weight for Anti Gravity Sphere");
-        AntiGravSphereLifetime = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Lifetime", 10f, "Time before Anti Gravity Sphere despawns (in seconds)");
+        AntiGravSphereLifetime = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Lifetime", 60f, "Time before Anti Gravity Sphere despawns (in seconds)");
     }
 }
