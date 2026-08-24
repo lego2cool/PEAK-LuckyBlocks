@@ -4,9 +4,10 @@
 
 ### Added
 * 5+ new Outcomes!
-* Blocks now spawn in Goom and Citadel luggages
-* Blocks now spawn in Clown luggages
-* AntiZooka and Ritual Dagger have been added to Mythic Spawn item pool.
+* Lucky Blocks now spawn in Goom and Citadel luggages
+* Lucky Blocks now spawn in Clown luggages
+* AntiZooka, Ritual Dagger, and Book of Bones have been added to Mythic Spawn item pool.
+*
 
 ### Fixes
 * Eruptions now work regardless of if Caldera is in rotation.

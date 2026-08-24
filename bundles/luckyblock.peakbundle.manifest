@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-UnityVersion: 6000.0.36f1
-CRC: 732253028
+UnityVersion: 6000.3.15f1
+CRC: 1785134045
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2219780380027502dbca89603b448efe
+    Hash: 8c2ff75910147ca7a81bad53ece1a5cc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c26ea7dcbc7be457eabb1f95c57b6ec5
+    Hash: dbdeb587ad4eb0f8fa5b43c72a5f0b7b
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 71165c01a5e4189809f579df6a5432eb
+    Hash: daa678fd0a46294816bf7075213a0cd0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -31,33 +31,31 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
-- Class: 83
-  Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: a44ff709bc91abce780008938281a0aa, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 3817816e1832aa939a8fd85555ea671b, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c30496d6ae6d6f907456e10a94e01ec6, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 4010ca30245e7832d9a346612df00d11, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 8fb177461be837a3546cac05929bd981, type: 3}
+  Script: {fileID: 11500000, guid: cc1cd1994cbfe12ca2e6e91ee6bf2b5d, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 796afb80110f34a39baaf989191fea45, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 4010ca30245e7832d9a346612df00d11, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c30496d6ae6d6f907456e10a94e01ec6, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: b043c240425f47fb23c7abfa03bfc85a, type: 3}
 - Class: 114
-  Script: {fileID: -1283557461, guid: 7033f03d09d1bd0032d912463ac99743, type: 3}
+  Script: {fileID: 11500000, guid: a44ff709bc91abce780008938281a0aa, type: 3}
 - Class: 114
-  Script: {fileID: -1960521384, guid: 5b36cd64ded50014aa477bea53e4fb84, type: 3}
+  Script: {fileID: -1960521384, guid: 60a80cf58a1b53440a5d5751f9bf8c65, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5ab8f401ece3e057ce511d64ce84d618, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
+  ClassName: BackpackReference
+- AssemblyName: Assembly-CSharp
   ClassName: Item/ItemUIData
 - AssemblyName: Assembly-CSharp
-  ClassName: SFX_Settings
+  ClassName: ItemRarityOverride
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.ArgumentCache
 - AssemblyName: UnityEngine.CoreModule
@@ -66,7 +64,9 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.Events.PersistentListenerMode
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: Zorro.Core.Runtime
+  ClassName: Zorro.Core.Optionable`1
 Assets:
-- Assets/_Mod/LuckyBlock/LuckyBlock.prefab
-- Assets/_Mod/LuckyBlock/ItemContent.asset
+- Assets/PEAK/_Mod/LuckyBlock/ItemContent1.asset
+- Assets/PEAK/_Mod/LuckyBlock/LuckyBlock.prefab
 Dependencies: []

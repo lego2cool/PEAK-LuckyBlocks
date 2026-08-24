@@ -119,6 +119,17 @@ public static class Config
     public static ConfigEntry<bool> AntiGravSphereEnabled = null!;
     public static ConfigEntry<int> AntiGravSphereWeight = null!;
     public static ConfigEntry<float> AntiGravSphereLifetime = null!;
+    //Capybara Pool
+    public static ConfigEntry<bool> CapybaraPoolEnabled = null!;
+    public static ConfigEntry<int> CapybaraPoolWeight = null!;
+    //Beetles
+    public static ConfigEntry<bool> BeetlesEnabled = null!;
+    public static ConfigEntry<int> BeetlesWeight = null!;
+    public static ConfigEntry<int> BeetlesCount = null!;
+    public static ConfigEntry<float> BeetlesLifetime = null!;
+    //Spawn Petrify Scout
+    public static ConfigEntry<bool> PetrifyScoutEnabled = null!;
+    public static ConfigEntry<int> PetrifyScoutWeight = null!;
 
     public static void BindAll()
     {
@@ -209,7 +220,7 @@ public static class Config
         EnderpearlWeight = Instance.Bind("Outcomes.Teleport", "Teleport Weight", 80, "Weight for Teleport");
         //Frog
         FrogEnabled = Instance.Bind("Outcomes.Frog", "Frog Spawn Enabled", true, "Enable Frog Spawn outcome");
-        FrogWeight = Instance.Bind("Outcomes.Frog", "Frog Spawn Weight", 100, "Weight for Frog Spawn");
+        FrogWeight = Instance.Bind("Outcomes.Frog", "Frog Spawn Weight", 70, "Weight for Frog Spawn");
         FrogCount = Instance.Bind("Outcomes.Frog", "Frog Count", 2 , "Number of frogs to spawn");
         FrogLifetime = Instance.Bind("Outcomes.Frog", "Frog Lifetime", 60f, "Time before frogs despawn (in seconds)");
         //Ghost Ball
@@ -230,9 +241,17 @@ public static class Config
         AntiGravSphereEnabled = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Enabled", true, "Enable Anti Gravity Sphere outcome");
         AntiGravSphereWeight = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Weight", 80, "Weight for Anti Gravity Sphere");
         AntiGravSphereLifetime = Instance.Bind("Outcomes.Anti Gravity Sphere", "Anti Gravity Sphere Lifetime", 60f, "Time before Anti Gravity Sphere despawns (in seconds)");
-    
-    
-    
+        //Capybara Pool
+        CapybaraPoolEnabled = Instance.Bind("Outcomes.Capybara Pool", "Capybara Pool Enabled", true, "Enable Capybara Pool outcome");
+        CapybaraPoolWeight = Instance.Bind("Outcomes.Capybara Pool", "Capybara Pool Weight", 50, "Weight for Capybara Pool");
+        //Beetles
+        BeetlesEnabled = Instance.Bind("Outcomes.Beetles", "Beetles Enabled", true, "Enable Beetles outcome");
+        BeetlesWeight = Instance.Bind("Outcomes.Beetles", "Beetles Weight", 75, "Weight for Beetles");
+        BeetlesCount = Instance.Bind("Outcomes.Beetles", "Beetles Count", 4, "Number of beetles to spawn");
+        BeetlesLifetime = Instance.Bind("Outcomes.Beetles", "Beetles Lifetime", 60f, "Time before beetles despawn (in seconds)");
+        //Spawn Petrify Scout
+        PetrifyScoutEnabled = Instance.Bind("Outcomes.Petrify Scout", "Petrify Scout Enabled", true, "Enable Petrify Scout outcome");
+        PetrifyScoutWeight = Instance.Bind("Outcomes.Petrify Scout", "Petrify Scout Weight", 100, "Weight for Petrify Scout");
     
     
     

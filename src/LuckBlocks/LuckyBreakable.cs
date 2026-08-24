@@ -71,9 +71,64 @@ public class LuckyBreakable : MonoBehaviour
 	[PunRPC]
 	public void RPC_SpawnPrefab(string prefabName, Vector3 position, Quaternion rotation)
     {
-		GameObject prefab = GetIslandStuff.EruptionPrefab; // Replace with your actual prefab reference
-		UnityEngine.Object.Instantiate<GameObject>(prefab, position, rotation);
-    }
+		GameObject prefab = null!;
+
+		if (prefabName == "EruptionPrefab")
+		{
+			prefab = GetIslandStuff.EruptionPrefab;
+		}
+		else if (prefabName == "JungleSporeMushroomExploPrefab")
+		{
+			prefab = GetIslandStuff.JungleSporeMushroomExploPrefab;
+		}
+		else if (prefabName == "CapybaraPool")
+		{
+			prefab = GetIslandStuff.CapybaraPool;
+		}
+
+		GameObject spawnedPrefab = UnityEngine.Object.Instantiate<GameObject>(prefab, position, rotation);
+		spawnedPrefab.SetActive(true);
+
+		if (prefabName == "CapybaraPool")
+		{
+			string[] berryBushNames = { "berrybush Variant", "berrybush Variant (1)", "berrybush Variant (2)" };
+			string[] CapybaraNames = { "Capybara (3)", "Capybara (2)" };
+
+			foreach (string berryBushName in berryBushNames)
+			{
+				foreach (Transform child in spawnedPrefab.GetComponentsInChildren<Transform>(true))
+				{
+					if (child.name != berryBushName)
+					{
+						continue;
+					}
+
+					BerryBush? berryBush = child.GetComponent<BerryBush>();
+					if (berryBush != null)
+					{
+						berryBush.SpawnItems(berryBush.spawnSpots);
+					}
+				}
+			}
+
+			foreach (string capybaraName in CapybaraNames)
+			{
+				foreach (Transform child in spawnedPrefab.GetComponentsInChildren<Transform>(true))
+				{
+					if (child.name != "Yuzu Berry_Spawner")
+					{
+						continue;
+					}
+
+					SingleItemSpawner? yuzuBerrySpawner = child.GetComponent<SingleItemSpawner>();
+					if (yuzuBerrySpawner != null)
+					{
+						yuzuBerrySpawner.TrySpawnItems();
+					}
+				}
+			}
+		}
+	}
 
 	// Token: 0x040006E1 RID: 1761
 	public Item item = null!;

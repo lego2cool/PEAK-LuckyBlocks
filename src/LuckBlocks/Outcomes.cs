@@ -97,6 +97,18 @@ public class Outcomes
 
         if (LuckyBlocks.Config.SporeExplosionEnabled.Value)
             ActionWeights.Add((SpawnSporeExplosion, LuckyBlocks.Config.SporeExplosionWeight.Value));
+        
+        if (LuckyBlocks.Config.AntiGravSphereEnabled.Value)
+            ActionWeights.Add((AntiGravSphere, LuckyBlocks.Config.AntiGravSphereWeight.Value));
+
+        if (LuckyBlocks.Config.CapybaraPoolEnabled.Value)
+            ActionWeights.Add((CapybaraPool, LuckyBlocks.Config.CapybaraPoolWeight.Value));
+
+        if (LuckyBlocks.Config.BeetlesEnabled.Value)
+            ActionWeights.Add((Beetles, LuckyBlocks.Config.BeetlesWeight.Value));
+        
+        if (LuckyBlocks.Config.PetrifyScoutEnabled.Value)
+            ActionWeights.Add((SpawnPetrfyScout, LuckyBlocks.Config.PetrifyScoutWeight.Value));
     }
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
@@ -195,7 +207,7 @@ public class Outcomes
     {
         Quaternion quaternion = Quaternion.LookRotation(Vector3.forward, coll.contacts[0].normal);
 
-        switch (UnityEngine.Random.Range(0, 4))
+        switch (UnityEngine.Random.Range(0, 5))
         {
             case 0:
                 PhotonNetwork.Instantiate("0_Items/LuggageSmall", coll.contacts[0].point, quaternion);
@@ -260,7 +272,7 @@ public class Outcomes
 
     public static void SpawnEruption(LuckyBreakable lb, Collision coll)
     {
-        lb.item.view.RPC("RPC_SpawnPrefab", RpcTarget.All, new object[] { "Eruption", coll.contacts[0].point, Quaternion.LookRotation(Vector3.up) });
+        lb.item.view.RPC("RPC_SpawnPrefab", RpcTarget.All, new object[] { "EruptionPrefab", coll.contacts[0].point, Quaternion.LookRotation(Vector3.up) });
 
     }
 
@@ -268,7 +280,7 @@ public class Outcomes
     {
         int gridSize = LuckyBlocks.Config.PeelRainGridSize.Value; // 5x5 grid = 25 peels
         float spacing = LuckyBlocks.Config.PeelRainSpacing.Value; // Distance between peels
-        float height = 6f; // Height to spawn at
+        float height = 0.75f; // Height to spawn at
 
         for (int x = 0; x < gridSize; x++)
         {
@@ -305,10 +317,10 @@ public class Outcomes
             for (int i = 0; i < count; i++)
             {
                 Vector3 spawnPos = coll.contacts[0].point + new Vector3(
-                    UnityEngine.Random.Range(-1f, 1f),  
-                    UnityEngine.Random.Range(2f, 4f),   
-                    UnityEngine.Random.Range(-1f, 1f)   
-                );
+                    UnityEngine.Random.Range(-0.10f, 0.10f),
+                    1f,
+                    UnityEngine.Random.Range(-0.10f, 0.10f)
+            );
 
                 // Spawn the Scorp Peels
                 GameObject scorpion = PhotonNetwork.Instantiate("0_Items/Scorpion", spawnPos, Quaternion.identity);
@@ -357,9 +369,9 @@ public class Outcomes
 
             // Spawn position above the block
             Vector3 spawnPos = coll.contacts[0].point + new Vector3(
-                UnityEngine.Random.Range(-3f, 3f),
-                UnityEngine.Random.Range(4f, 6f),
-                UnityEngine.Random.Range(-3f, 3f)
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                1f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
             );
 
             GameObject berry = PhotonNetwork.Instantiate(prefabName, spawnPos, Quaternion.identity);
@@ -429,17 +441,24 @@ public class Outcomes
     public static void Backpacks(LuckyBreakable lb, Collision coll)
     {
         int count = LuckyBlocks.Config.BackpackCount.Value;
+        string[] PackPool = new string[]
+        {
+            "0_Items/Backpack",
+            "0_Items/Fannypack",
+            "0_Items/Rocketpack",
+            "0_Items/Jetpack",
+        };
 
         for (int i = 0; i < count; i++)
         {
             Vector3 spawnPos = coll.contacts[0].point + new Vector3(
-                UnityEngine.Random.Range(-2f, 2f),
-                UnityEngine.Random.Range(3f, 6f),
-                UnityEngine.Random.Range(-2f, 2f)
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                1f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
             );
 
             // Spawn the backpack prefab again
-            PhotonNetwork.Instantiate("0_Items/Backpack", spawnPos, Quaternion.identity);
+            PhotonNetwork.Instantiate(PackPool[UnityEngine.Random.Range(0, PackPool.Length)], spawnPos, Quaternion.identity);
         }
     }
 
@@ -469,9 +488,9 @@ public class Outcomes
             string prefabName = equipmentPool[UnityEngine.Random.Range(0, equipmentPool.Length)];
             
             Vector3 spawnPos = coll.contacts[0].point + new Vector3(
-                UnityEngine.Random.Range(-2f, 2f),
-                UnityEngine.Random.Range(3f, 5f),
-                UnityEngine.Random.Range(-2f, 2f)
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                1f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
             );
 
             PhotonNetwork.Instantiate(prefabName, spawnPos, Quaternion.identity);
@@ -496,6 +515,7 @@ public class Outcomes
             "0_Items/Warp Compass",
             "0_Items/RitualDagger",
             "0_Items/AntiZooka",
+            "0_Items/BookOfBones",
         };
 
         // Random item from pool
@@ -554,7 +574,7 @@ public class Outcomes
 
     public static void SpawnSporeExplosion(LuckyBreakable lb, Collision coll)
     {
-        
+        lb.item.view.RPC("RPC_SpawnPrefab", RpcTarget.All, new object[] { "JungleSporeMushroomExploPrefab", coll.contacts[0].point, Quaternion.LookRotation(Vector3.up) });   
     }
     
     public static void MimicLuggage(LuckyBreakable lb, Collision coll)
@@ -586,6 +606,40 @@ public class Outcomes
         GameObject antiGravSphere = PhotonNetwork.Instantiate("AntiSphere_Projectile", coll.contacts[0].point, quaternion, 0, null);
         Peak.AntiSphere antiSphereComponent = antiGravSphere.GetComponent<Peak.AntiSphere>();
         antiSphereComponent.lifetime = LuckyBlocks.Config.AntiGravSphereLifetime.Value;
+    }
+
+    public static void CapybaraPool(LuckyBreakable lb, Collision coll)
+    {
+        lb.item.view.RPC("RPC_SpawnPrefab", RpcTarget.All, new object[] { "CapybaraPool", coll.contacts[0].point, Quaternion.identity });
+    }
+
+    public static void Beetles(LuckyBreakable lb, Collision coll)
+    {
+        int count = LuckyBlocks.Config.BeetlesCount.Value;
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPos = coll.contacts[0].point + new Vector3(
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                0.75f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
+            );
+
+            // Spawn the Beetle prefab
+            GameObject beetle = PhotonNetwork.Instantiate("0_Items/Beetle", spawnPos, Quaternion.identity);
+            RemoveAfterSeconds remove = beetle.AddComponent<RemoveAfterSeconds>();
+            remove.photonRemove = true;
+            remove.seconds = LuckyBlocks.Config.BeetlesLifetime.Value;
+        }
+    }
+
+    public static void SpawnPetrfyScout(LuckyBreakable lb, Collision coll)
+    {
+        PhotonNetwork.Instantiate("PetrifiedScout", coll.contacts[0].point, lb.item.lastThrownCharacter.refs.ragdoll.bodySpawnPoint.transform.rotation, 0, null).GetComponent<PhotonView>().RPC("RPC_SpawnPetrifiedScout", RpcTarget.All, new object[]
+		{
+            lb.item.view.ViewID,
+			false
+		});
     }
 
 
