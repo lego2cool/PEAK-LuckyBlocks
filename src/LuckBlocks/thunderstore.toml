@@ -7,7 +7,7 @@ repository = "https://thunderstore.io"
 [package]
 namespace = "legocool"
 name = "Lucky_Blocks"
-description = "Adds Lucky Blocks with randomized effects. Over 20 good and bad outcomes."
+description = "Adds Lucky Blocks with randomized effects. Over 30 good and bad outcomes."
 websiteUrl = "https://github.com/lego2cool/PEAK-LuckyBlocks" 
 containsNsfwContent = false
 
