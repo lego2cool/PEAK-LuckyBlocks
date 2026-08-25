@@ -8,7 +8,7 @@ If you come across any bugs or have feature suggestions, please post them in the
 
 * Adds a new Lucky Block item that breaks open similar to a coconut.
 * Fully multiplayer compatible.
-* 20+ different outcomes!
+* 30+ different outcomes!
 
 ## ⚠️ Notes
 
@@ -30,7 +30,7 @@ If you come across any bugs or have feature suggestions, please post them in the
 <details> <summary><strong>Click to reveal all LuckyBlock outcomes</strong></summary>
 
 ### Good
-* Luggage Spawn (Small, Big, Epic, and Ancient)
+* Luggage Spawn (Small, Big, Climbers, Clown, and Ancient)
 * Lucky Block Rain
 * Berry Rain
 * Backpacks Spawn
@@ -38,6 +38,8 @@ If you come across any bugs or have feature suggestions, please post them in the
 * Equipment Rain
 * Random Mythic Item Spawn
 * Checkpoint Flag Spawn
+* Capybara Pool
+* Anti-Gravity Sphere
 
 ### Bad
 * Tornado Spawn
@@ -47,6 +49,12 @@ If you come across any bugs or have feature suggestions, please post them in the
 * Scorpion Rain
 * Scoutmaster Spawn
 * Zombie Spawn
+* Petrify Scout
+* Fire Tornado
+* Cactus Balls
+* Beetle Spawn
+* Ghost Ball Spawn
+* Spore Explosion
 
 ### Neutral
 * Rope Spawn
@@ -58,6 +66,8 @@ If you come across any bugs or have feature suggestions, please post them in the
 * Portable Stove Spawn
 * Sunscreen Cloud
 * Teleport
+* Airplane Loot
+* Shell Party
 </details>
 
 ## ⚙️ Configuration
@@ -317,7 +327,123 @@ You can edit these values:
 
 </details>
 
+<details>
+<summary><strong>Ghost Ball</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Ghost Ball Spawn Enabled` | Enable Ghost Ball outcome | `true` |
+| `Ghost Ball Spawn Weight` | Weight for Ghost Ball Spawn | `75` |
+| `Ghost Ball Lifetime` | Time before the ghost ball despawns (in seconds) | `30` |
+
 </details>
+
+<details>
+<summary><strong>Luggage Mimic</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Luggage Mimic Spawn Enabled` | Enable Luggage Mimic outcome | `true` |
+| `Luggage Mimic Spawn Weight` | Weight for Luggage Mimic Spawn | `75` |
+
+</details>
+
+<details>
+<summary><strong>Spore Explosion</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spore Explosion Enabled` | Enable Spore Explosion outcome | `true` |
+| `Spore Explosion Weight` | Weight for Spore Explosion | `60` |
+
+</details>
+
+<details>
+<summary><strong>Shell Party</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Shell Party Enabled` | Enable Shell Party outcome | `true` |
+| `Shell Party Weight` | Weight for Shell Party | `100` |
+| `Shell Party Count` | Number of shells to spawn | `5` |
+
+</details>
+
+<details>
+<summary><strong>Anti-Gravity Sphere</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Anti Gravity Sphere Enabled` | Enable Anti-Gravity Sphere outcome | `true` |
+| `Anti Gravity Sphere Weight` | Weight for Anti-Gravity Sphere | `80` |
+| `Anti Gravity Sphere Lifetime` | Time before the sphere despawns (in seconds) | `60` |
+
+</details>
+
+<details>
+<summary><strong>Capybara Pool</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Capybara Pool Enabled` | Enable Capybara Pool outcome | `true` |
+| `Capybara Pool Weight` | Weight for Capybara Pool | `50` |
+
+</details>
+
+<details>
+<summary><strong>Beetles</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Beetles Enabled` | Enable Beetles outcome | `true` |
+| `Beetles Weight` | Weight for Beetles | `75` |
+| `Beetles Count` | Number of beetles to spawn | `4` |
+| `Beetles Lifetime` | Time before beetles despawn (in seconds) | `60` |
+
+</details>
+
+<details>
+<summary><strong>Petrify Scout</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Petrify Scout Enabled` | Enable Petrify Scout outcome | `true` |
+| `Petrify Scout Weight` | Weight for Petrify Scout | `100` |
+
+</details>
+
+<details>
+<summary><strong>Airplane Loot</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Airplane Loot Enabled` | Enable Airplane Loot outcome | `true` |
+| `Airplane Loot Weight` | Weight for Airplane Loot | `100` |
+
+</details>
+
+<details>
+<summary><strong>Cactus Balls</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Cactus Balls Enabled` | Enable Cactus Balls outcome | `true` |
+| `Cactus Balls Weight` | Weight for Cactus Balls | `100` |
+| `Cactus Balls Count` | Number of cactus balls to spawn | `5` |
+| `Cactus Balls Lifetime` | Time before cactus balls despawn (in seconds) | `120` |
+
+</details>
+
+<details>
+<summary><strong>Fire Tornado</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Fire Tornado Enabled` | Enable Fire Tornado outcome | `true` |
+| `Fire Tornado Weight` | Weight for Fire Tornado | `100` |
+
+</details>
+
 
 ## 🔧 How To Add Custom Outcomes
 <details>

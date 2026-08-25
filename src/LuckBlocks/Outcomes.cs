@@ -109,6 +109,16 @@ public class Outcomes
         
         if (LuckyBlocks.Config.PetrifyScoutEnabled.Value)
             ActionWeights.Add((SpawnPetrfyScout, LuckyBlocks.Config.PetrifyScoutWeight.Value));
+        
+        if (LuckyBlocks.Config.AirPlaneLootEnabled.Value)
+            ActionWeights.Add((Explode, LuckyBlocks.Config.AirPlaneLootWeight.Value));
+        
+        if (LuckyBlocks.Config.CactusBallsEnabled.Value)
+            ActionWeights.Add((CactusBalls, LuckyBlocks.Config.CactusBallsWeight.Value));
+        
+        if (LuckyBlocks.Config.FireTornadoEnabled.Value)
+            ActionWeights.Add((FireTornado, LuckyBlocks.Config.FireTornadoWeight.Value));
+
     }
 
     public static void AddOutcome(Action<LuckyBreakable, Collision> action, int weight = 100, string? name = null)
@@ -637,12 +647,53 @@ public class Outcomes
     {
         PhotonNetwork.Instantiate("PetrifiedScout", coll.contacts[0].point, lb.item.lastThrownCharacter.refs.ragdoll.bodySpawnPoint.transform.rotation, 0, null).GetComponent<PhotonView>().RPC("RPC_SpawnPetrifiedScout", RpcTarget.All, new object[]
 		{
-            lb.item.view.ViewID,
+            lb.item.lastThrownCharacter.photonView.ViewID,
 			false
 		});
     }
 
+    public static void AirPlaneLoot(LuckyBreakable lb, Collision coll)
+    {
+        PhotonNetwork.Instantiate("0_Items/BingBong", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Binoculars", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Flare", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Bugle", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Lantern", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Frisbee", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Compass", coll.contacts[0].point, Quaternion.identity);
+        PhotonNetwork.Instantiate("0_Items/Guidebook", coll.contacts[0].point, Quaternion.identity);
+    }
 
+    public static void CactusBalls(LuckyBreakable lb, Collision coll)
+    {
+        int count = LuckyBlocks.Config.CactusBallsCount.Value;
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPos = coll.contacts[0].point + new Vector3(
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                0.75f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
+            );
+
+            // Spawn the Cactus Ball prefab
+            GameObject cactusBall = PhotonNetwork.Instantiate("0_Items/CactusBall", spawnPos, Quaternion.identity);
+            RemoveAfterSeconds remove = cactusBall.AddComponent<RemoveAfterSeconds>();
+            remove.photonRemove = true;
+            remove.seconds = LuckyBlocks.Config.CactusBallsLifetime.Value;
+        }
+    }
+
+    public static void SpawnAmulet(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
+
+    public static void FireTornado(LuckyBreakable lb, Collision coll)
+    {
+        SpawnEruption(lb, coll);
+        SpawnTornado(lb, coll);
+    }
 
     
 }

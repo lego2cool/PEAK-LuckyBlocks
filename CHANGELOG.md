@@ -3,14 +3,16 @@
 ##\[1.3.0] - Unreleased
 
 ### Added
-* 5+ new Outcomes!
+* 10+ new Outcomes!
 * Lucky Blocks now spawn in Goom and Citadel luggages
 * Lucky Blocks now spawn in Clown luggages
 * AntiZooka, Ritual Dagger, and Book of Bones have been added to Mythic Spawn item pool.
-*
 
 ### Fixes
 * Eruptions now work regardless of if Caldera is in rotation.
+
+### Changes
+* All outcomes that had something falling from the sky now no longer do that, the items now spawn where the block was thrown.
 
 ## \[1.2.0] - 2026-05-05
 

@@ -130,6 +130,17 @@ public static class Config
     //Spawn Petrify Scout
     public static ConfigEntry<bool> PetrifyScoutEnabled = null!;
     public static ConfigEntry<int> PetrifyScoutWeight = null!;
+    //Airplane Loot
+    public static ConfigEntry<bool> AirPlaneLootEnabled = null!;
+    public static ConfigEntry<int> AirPlaneLootWeight = null!;
+    //Cactus Balls
+    public static ConfigEntry<bool> CactusBallsEnabled = null!;
+    public static ConfigEntry<int> CactusBallsWeight = null!;
+    public static ConfigEntry<int> CactusBallsCount = null!;
+    public static ConfigEntry<float> CactusBallsLifetime = null!;
+    //Fire Tornado
+    public static ConfigEntry<bool> FireTornadoEnabled = null!;
+    public static ConfigEntry<int> FireTornadoWeight = null!;
 
     public static void BindAll()
     {
@@ -252,7 +263,17 @@ public static class Config
         //Spawn Petrify Scout
         PetrifyScoutEnabled = Instance.Bind("Outcomes.Petrify Scout", "Petrify Scout Enabled", true, "Enable Petrify Scout outcome");
         PetrifyScoutWeight = Instance.Bind("Outcomes.Petrify Scout", "Petrify Scout Weight", 100, "Weight for Petrify Scout");
-    
+        //Airplane Loot
+        AirPlaneLootEnabled = Instance.Bind("Outcomes.Airplane Loot", "Airplane Loot Enabled", true, "Enable Airplane Loot outcome");
+        AirPlaneLootWeight = Instance.Bind("Outcomes.Airplane Loot", "Airplane Loot Weight", 100, "Weight for Airplane Loot");
+        //Cactus Balls
+        CactusBallsEnabled = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Enabled", true, "Enable Cactus Balls outcome");
+        CactusBallsWeight = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Weight", 100, "Weight for Cactus Balls");
+        CactusBallsCount = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Count", 5, "Number of cactus balls to spawn");
+        CactusBallsLifetime = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Lifetime", 120f, "Time before cactus balls despawn (in seconds)");
+        //Fire Tornado
+        FireTornadoEnabled = Instance.Bind("Outcomes.Fire Tornado", "Fire Tornado Enabled", true, "Enable Fire Tornado outcome");
+        FireTornadoWeight = Instance.Bind("Outcomes.Fire Tornado", "Fire Tornado Weight", 100, "Weight for Fire Tornado");
     
     
     
