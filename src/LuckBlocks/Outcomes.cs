@@ -695,6 +695,31 @@ public class Outcomes
         SpawnTornado(lb, coll);
     }
 
+    public static void RevivePlayer(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
+
+    public static void BallBallBalling(LuckyBreakable lb, Collision coll)
+    {
+        int count = LuckyBlocks.Config.BasketBallsCount.Value;
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPos = coll.contacts[0].point + new Vector3(
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                0.75f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
+            );
+
+            // Spawn the Cactus Ball prefab
+            GameObject BasketBall = PhotonNetwork.Instantiate("0_Items/Ball", spawnPos, Quaternion.identity);
+            RemoveAfterSeconds remove = BasketBall.AddComponent<RemoveAfterSeconds>();
+            remove.photonRemove = true;
+            remove.seconds = LuckyBlocks.Config.BasketBallsLifetime.Value;
+        }
+    }
+
     
 }
 
