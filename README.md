@@ -443,6 +443,7 @@ You can edit these values:
 | `Fire Tornado Weight` | Weight for Fire Tornado | `100` |
 
 </details>
+</details>
 
 
 ## 🔧 How To Add Custom Outcomes
