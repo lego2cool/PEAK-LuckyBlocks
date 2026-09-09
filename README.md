@@ -40,6 +40,7 @@ If you come across any bugs or have feature suggestions, please post them in the
 * Checkpoint Flag Spawn
 * Capybara Pool
 * Anti-Gravity Sphere
+* Revive Scout
 
 ### Bad
 * Tornado Spawn
@@ -68,6 +69,7 @@ If you come across any bugs or have feature suggestions, please post them in the
 * Teleport
 * Airplane Loot
 * Shell Party
+* BasketBalls
 </details>
 
 ## ⚙️ Configuration
@@ -75,6 +77,16 @@ If you come across any bugs or have feature suggestions, please post them in the
 A config file is auto-generated at: `BepInEx/config/legocool.LuckyBlocks.cfg`
 
 The config is synced by the host to other players. If changes are made to the config, the game **must** be reloaded for the changes to take effect. Supports outcomes added by other mods, allowing you to enable/disable it and change its weight.
+
+### Lucky Block Item
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Spawn Weight` | Weight for Lucky Block Item spawn. Rarity weight reference: Common 100, Uncommon 50, Rare 35, Epic 20, Legendary 15, Mythic 6, Ridiculously Rare 3. | `500` |
+| `Item Weight` | Weight for Lucky Block Item spawn | `1` |
+| `Min Break Velocity` | Minimum velocity required to break the Lucky Block Item. Recommended not to change this value. | `10` |
+
+### Outcomes
 
 You can edit these values:
 
@@ -441,6 +453,28 @@ You can edit these values:
 | --- | --- | --- |
 | `Fire Tornado Enabled` | Enable Fire Tornado outcome | `true` |
 | `Fire Tornado Weight` | Weight for Fire Tornado | `100` |
+
+</details>
+
+<details>
+<summary><strong>Revive Scout</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `Revive Scout Enabled` | Enable Revive Scout outcome | `true` |
+| `Revive Scout Weight` | Weight for Revive Scout | `200` |
+
+</details>
+
+<details>
+<summary><strong>BasketBalls</strong></summary>
+
+| Key | Description | Default |
+| --- | --- | --- |
+| `BasketBalls Enabled` | Enable BasketBalls outcome | `true` |
+| `BasketBalls Weight` | Weight for BasketBalls | `100` |
+| `BasketBalls Count` | Number of basketballs to spawn | `5` |
+| `BasketBalls Lifetime` | Time before basketballs despawn (in seconds) | `120` |
 
 </details>
 </details>

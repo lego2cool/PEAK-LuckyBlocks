@@ -120,6 +120,12 @@ public class Outcomes
         
         if (LuckyBlocks.Config.FireTornadoEnabled.Value)
             ActionWeights.Add((FireTornado, LuckyBlocks.Config.FireTornadoWeight.Value));
+        
+        if (LuckyBlocks.Config.ReviveScoutEnabled.Value)
+            ActionWeights.Add((RevivePlayer, LuckyBlocks.Config.ReviveScoutWeight.Value));
+
+        if (LuckyBlocks.Config.BasketBallsEnabled.Value)
+            ActionWeights.Add((BallBallBalling, LuckyBlocks.Config.BasketBallsWeight.Value));
 
     }
 
