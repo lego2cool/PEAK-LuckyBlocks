@@ -9,6 +9,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using ExitGames.Client.Photon.StructWrapping;
 
 namespace LuckyBlocks;
 
@@ -49,7 +50,7 @@ public partial class Plugin : BaseUnityPlugin
         }
         LocalizedText.mainTable["NAME_LUCKYBLOCK"][(int)LocalizedText.Language.SimplifiedChinese] = "幸运方块";
 
-        LootData.RarityWeights.Add(LuckyBlockRarity.LuckyBlockDefault, 500);
+        LootData.RarityWeights.Add(LuckyBlockRarity.LuckyBlockDefault, LuckyBlocks.Config.LuckyBlockItemSpawnWeight.Value);
 
         Log.LogInfo($"Plugin {Name} is loaded!");
     }
@@ -63,11 +64,13 @@ public partial class Plugin : BaseUnityPlugin
 
         var breaking = LBPrefab.AddComponent<LuckyBreakable>();
         breaking.breakOnCollision = true;
-        breaking.minBreakVelocity = 10f;
+        breaking.minBreakVelocity = LuckyBlocks.Config.LuckyBlockItemMinBreakVelocity.Value;
 
         // Makes the block more common
         var rarity = LBPrefab.GetComponent<LootData>();
         rarity.Rarity = LuckyBlockRarity.LuckyBlockDefault;
+
+        LBPrefab.GetComponent<Item>().carryWeight = LuckyBlocks.Config.LuckyBlockItemWeight.Value;
 
         bundle.Mod.RegisterContent();
     }

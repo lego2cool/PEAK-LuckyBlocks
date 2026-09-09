@@ -6,6 +6,11 @@ public static class Config
 {
     public static ConfigFile Instance = null!;
 
+    //Lucky Block Item Config
+    public static ConfigEntry<int> LuckyBlockItemSpawnWeight = null!;
+    public static ConfigEntry<int> LuckyBlockItemWeight = null!;
+    public static ConfigEntry<float> LuckyBlockItemMinBreakVelocity = null!;
+
     //Debug Config
     public static ConfigEntry<bool> DebugMode = null!;
     public static ConfigEntry<string> ForcedOutcome = null!;    
@@ -141,9 +146,22 @@ public static class Config
     //Fire Tornado
     public static ConfigEntry<bool> FireTornadoEnabled = null!;
     public static ConfigEntry<int> FireTornadoWeight = null!;
+    // Revive Scout
+    public static ConfigEntry<bool> ReviveScoutEnabled = null!;
+    public static ConfigEntry<int> ReviveScoutWeight = null!;
+    // BasketBalls
+    public static ConfigEntry<bool> BasketBallsEnabled = null!;
+    public static ConfigEntry<int> BasketBallsWeight = null!;
+    public static ConfigEntry<int> BasketBallsCount = null!;
+    public static ConfigEntry<float> BasketBallsLifetime = null!;
 
     public static void BindAll()
     {
+        //Lucky Block Item Config
+        LuckyBlockItemSpawnWeight = Instance.Bind("Lucky Block Item", "Spawn Weight", 500, "Weight for Lucky Block Item spawn");
+        LuckyBlockItemWeight = Instance.Bind("Lucky Block Item", "Item Weight", 1, "Weight for Lucky Block Item spawn");
+        LuckyBlockItemMinBreakVelocity = Instance.Bind("Lucky Block Item", "Min Break Velocity", 10f, "Minimum velocity required to break the Lucky Block Item (Recommended to not change this value)");
+
         //Tornado
         TornadoEnabled = Instance.Bind("Outcomes.Tornado", "Spawn Tornado Enabled", true, "Enable Spawn Tornado outcome");
         TornadoWeight = Instance.Bind("Outcomes.Tornado", "Spawn Tornado Weight", 80, "Weight for Spawn Tornado");
@@ -268,12 +286,20 @@ public static class Config
         AirPlaneLootWeight = Instance.Bind("Outcomes.Airplane Loot", "Airplane Loot Weight", 100, "Weight for Airplane Loot");
         //Cactus Balls
         CactusBallsEnabled = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Enabled", true, "Enable Cactus Balls outcome");
-        CactusBallsWeight = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Weight", 100, "Weight for Cactus Balls");
+        CactusBallsWeight = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Weight", 90, "Weight for Cactus Balls");
         CactusBallsCount = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Count", 5, "Number of cactus balls to spawn");
         CactusBallsLifetime = Instance.Bind("Outcomes.Cactus Balls", "Cactus Balls Lifetime", 120f, "Time before cactus balls despawn (in seconds)");
         //Fire Tornado
         FireTornadoEnabled = Instance.Bind("Outcomes.Fire Tornado", "Fire Tornado Enabled", true, "Enable Fire Tornado outcome");
         FireTornadoWeight = Instance.Bind("Outcomes.Fire Tornado", "Fire Tornado Weight", 100, "Weight for Fire Tornado");
+        //Revive Scout
+        ReviveScoutEnabled = Instance.Bind("Outcomes.Revive Scout", "Revive Scout Enabled", true, "Enable Revive Scout outcome");
+        ReviveScoutWeight = Instance.Bind("Outcomes.Revive Scout", "Revive Scout Weight", 200, "Weight for Revive Scout");
+        //BasketBalls
+        BasketBallsEnabled = Instance.Bind("Outcomes.BasketBalls", "BasketBalls Enabled", true, "Enable BasketBalls outcome");
+        BasketBallsWeight = Instance.Bind("Outcomes.BasketBalls", "BasketBalls Weight", 100, "Weight for BasketBalls");
+        BasketBallsCount = Instance.Bind("Outcomes.BasketBalls", "BasketBalls Count", 5, "Number of basketballs to spawn");
+        BasketBallsLifetime = Instance.Bind("Outcomes.BasketBalls", "BasketBalls Lifetime", 120f, "Time before basketballs despawn (in seconds)");
     
     
     

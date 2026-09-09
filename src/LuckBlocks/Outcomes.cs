@@ -4,6 +4,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using BepInEx.Configuration;
+using Zorro.Core;
+using Peak;
 
 
 public class Outcomes
@@ -697,7 +699,29 @@ public class Outcomes
 
     public static void RevivePlayer(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        List<Character> list = new List<Character>();
+		foreach (Character character in Character.AllCharacters)
+		{
+			if (character.data.dead || character.data.fullyPassedOut)
+			{
+				list.Add(character);
+			}
+		}
+		if (list.Count == 0)
+		{
+			TriggerRandom(lb, coll);
+			return;
+		}
+		list.RandomSelection((Character c) => 1).photonView.RPC("RPCA_ReviveAtPosition", RpcTarget.All, new object[]
+		{
+			coll.contacts[0].point + Vector3.up * 1f,
+			false,
+			-1
+		});
+		if (Singleton<AchievementManager>.Instance)
+		{
+			Singleton<AchievementManager>.Instance.AddToRunBasedInt(RUNBASEDVALUETYPE.ScoutsResurrected, 1);
+		}
     }
 
     public static void BallBallBalling(LuckyBreakable lb, Collision coll)
@@ -713,7 +737,7 @@ public class Outcomes
             );
 
             // Spawn the Cactus Ball prefab
-            GameObject BasketBall = PhotonNetwork.Instantiate("0_Items/Ball", spawnPos, Quaternion.identity);
+            GameObject BasketBall = PhotonNetwork.Instantiate("0_Items/Basketball", spawnPos, Quaternion.identity);
             RemoveAfterSeconds remove = BasketBall.AddComponent<RemoveAfterSeconds>();
             remove.photonRemove = true;
             remove.seconds = LuckyBlocks.Config.BasketBallsLifetime.Value;
