@@ -158,7 +158,7 @@ public static class Config
     public static void BindAll()
     {
         //Lucky Block Item Config
-        LuckyBlockItemSpawnWeight = Instance.Bind("Lucky Block Item", "Spawn Weight", 500, "Weight for Lucky Block Item spawn");
+        LuckyBlockItemSpawnWeight = Instance.Bind("Lucky Block Item", "Spawn Weight", 500, "Weight for Lucky Block Item spawn (Rarity Weight Reference: Common 100, Uncommon 50, Rare 35, Epic 20, Legendary 15, Mythic 6, Ridiculously Rare 3)");
         LuckyBlockItemWeight = Instance.Bind("Lucky Block Item", "Item Weight", 1, "Weight for Lucky Block Item spawn");
         LuckyBlockItemMinBreakVelocity = Instance.Bind("Lucky Block Item", "Min Break Velocity", 10f, "Minimum velocity required to break the Lucky Block Item (Recommended to not change this value)");
 
