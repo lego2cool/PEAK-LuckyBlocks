@@ -1,5 +1,11 @@
 # Changelog
 
+## \[1.4.0] - 2026-09-09
+
+### Added
+* 2 new Outcomes!
+* Config options for the Lucky Block item.
+
 ## \[1.3.0] - 2026-08-24
 
 ### Added
