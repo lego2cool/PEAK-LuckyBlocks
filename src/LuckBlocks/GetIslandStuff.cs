@@ -10,6 +10,8 @@ public class GetIslandStuff
     public static GameObject EruptionPrefab { get; private set; } = null!;
     public static GameObject JungleSporeMushroomExploPrefab { get; private set; } = null!;
     public static GameObject CapybaraPool{ get; private set; } = null!;
+    public static GameObject Urchin{ get; private set; } = null!;
+    
 
     public static GameObject? FindGameObjectByPath(string path)
     {
@@ -77,32 +79,50 @@ public class GetIslandStuff
 
         Debug.Log("WilIsland finished loading.");
 
+        SaveEruptionPrefab();
+        SaveSporeExploPrefab();
+        SaveCapybaraPoolPrefab();
+
+
+        yield return SceneManager.UnloadSceneAsync("WilIsland");
+
+        LoadingWilIsland = false;
+    }
+
+    public static void SaveEruptionPrefab()
+    {
         EruptionSpawner spawner =
-            Object.FindAnyObjectByType<EruptionSpawner>();
+        Object.FindAnyObjectByType<EruptionSpawner>();
 
         if (spawner == null)
         {
             Debug.LogError("Couldn't find EruptionSpawner.");
-            yield break;
+            return;
         }
         EruptionPrefab = spawner.eruption;
+    }
 
+    public static void SaveSporeExploPrefab()
+    {
         GameObject? SporeMushroom = FindGameObjectByPath("Map/Biome_2/Tropics/Jungle_Segment/Default/Props_Wall/ExploShrooms/Jungle_SporeMushroomExplo");
         SpawnGameObject? SporeMushroomSpawner = SporeMushroom?.GetComponent<SpawnGameObject>();
 
         if (SporeMushroomSpawner?.toSpawn == null)
         {
             Debug.LogError("Couldn't find Jungle Spore Mushroom explosion prefab.");
-            yield break;
+            return;
         }
 
         JungleSporeMushroomExploPrefab = SporeMushroomSpawner.toSpawn;
+    }
 
+    public static void SaveCapybaraPoolPrefab()
+    {
         GameObject? CapybaraPoolObj = FindGameObjectByPath("Map/Biome_3/Alpine/Snow_Segment/Onsen");
         if (CapybaraPoolObj == null)
         {
             Debug.LogError("Couldn't find Capybara Pool.");
-            yield break;
+            return;
         }
 
         CapybaraPool = Object.Instantiate(CapybaraPoolObj);
@@ -113,10 +133,25 @@ public class GetIslandStuff
         Object.DontDestroyOnLoad(CapybaraPool);
         CapybaraPool.SetActive(false);
         Debug.Log("Created persistent Capybara Pool template.");
+    }
 
-        yield return SceneManager.UnloadSceneAsync("WilIsland");
+    public static void SaveUrchinPrefab()
+    {
+        GameObject? UrchinObj = FindGameObjectByPath("Map/Biome_3/Alpine/Snow_Segment/Props_Floor/Urchin");
+        if (UrchinObj == null)
+        {
+            Debug.LogError("Couldn't find Urchin.");
+            return;
+        }
 
-        LoadingWilIsland = false;
+        Urchin = Object.Instantiate(UrchinObj);
+        Urchin.name = "UrchinTemplate";
+        Urchin.transform.SetParent(null);
+        Urchin.transform.position = new Vector3(0f, -10000f, 0f);
+        Urchin.hideFlags = HideFlags.HideAndDontSave;
+        Object.DontDestroyOnLoad(Urchin);
+        Urchin.SetActive(false);
+        Debug.Log("Created persistent Urchin template.");
     }
 
 }
