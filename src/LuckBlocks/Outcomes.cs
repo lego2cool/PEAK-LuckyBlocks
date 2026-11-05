@@ -753,37 +753,65 @@ public class Outcomes
     
     public static void GourmandYummyStuff(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        PhotonNetwork.Instantiate("0_Items/BingBong", coll.contacts[0].point, Quaternion.identity);
     }
 
     public static void BingBongSoManyOMG(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        for (int i = 0; i < BingBongCount.Value; i++)
+        {
+            Vector3 spawnPos = coll.contacts[0].point + new Vector3(
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                0.75f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
+            );
+
+            // Spawn the BingBong prefab
+            GameObject BingBong = PhotonNetwork.Instantiate("0_Items/BingBong", spawnPos, Quaternion.identity);
+            RemoveAfterSeconds remove = BingBong.AddComponent<RemoveAfterSeconds>();
+            remove.photonRemove = true;
+            remove.seconds = LuckyBlocks.Config.BingBongLifetime.Value;
+        }
     }
 
     public static void SeaUrchinWhyDidntIAddThisAlready(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        lb.item.view.RPC("RPC_SpawnPrefab", RpcTarget.All, new object[] { "Urchin", coll.contacts[0].point, Quaternion.identity });
     } 
 
     public static void SoManyScreams(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        for (int i = 0; i < LuckyBlocks.Config.MandrakesCount.Value; i++)
+        {
+            Vector3 spawnPos = coll.contacts[0].point + new Vector3(
+                UnityEngine.Random.Range(-0.10f, 0.10f),
+                0.75f,
+                UnityEngine.Random.Range(-0.10f, 0.10f)
+            );
+
+
+            // Spawn the Mandrake prefab
+            GameObject Mandrake = PhotonNetwork.Instantiate("0_Items/Mandrake", spawnPos, Quaternion.identity);
+            RemoveAfterSeconds remove = Mandrake.AddComponent<RemoveAfterSeconds>();
+            remove.photonRemove = true;
+            remove.seconds = LuckyBlocks.Config.MandrakesLifetime.Value;
+        }
     }
 
     public static void napPlant(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        //I think i need to grab it from WilIsland
     }
 
     public static void BlindnessIGuess(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        //Flashbang from alpines area might work fine
     }
 
     public static void KidnappingBird(LuckyBreakable lb, Collision coll)
     {
-        //TODO
+        //I think i can just network spawn it
+        PhotonNetwork.Instantiate("0_Items/BingBong", coll.contacts[0].point, Quaternion.identity);
     }
     
 }
