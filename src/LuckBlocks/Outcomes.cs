@@ -6,6 +6,7 @@ using UnityEngine;
 using BepInEx.Configuration;
 using Zorro.Core;
 using Peak;
+using System.Diagnostics.Contracts;
 
 
 public class Outcomes
@@ -749,7 +750,41 @@ public class Outcomes
             remove.seconds = LuckyBlocks.Config.BasketBallsLifetime.Value;
         }
     }
+    
+    public static void GourmandYummyStuff(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
 
+    public static void BingBongSoManyOMG(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
+
+    public static void SeaUrchinWhyDidntIAddThisAlready(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    } 
+
+    public static void SoManyScreams(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
+
+    public static void napPlant(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
+
+    public static void BlindnessIGuess(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
+
+    public static void KidnappingBird(LuckyBreakable lb, Collision coll)
+    {
+        //TODO
+    }
     
 }
 
