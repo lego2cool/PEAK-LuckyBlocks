@@ -85,6 +85,10 @@ public class LuckyBreakable : MonoBehaviour
 		{
 			prefab = GetIslandStuff.CapybaraPool;
 		}
+		else if (prefabName == "Urchin")
+		{
+			prefab = GetIslandStuff.Urchin;
+		}
 
 		GameObject spawnedPrefab = UnityEngine.Object.Instantiate<GameObject>(prefab, position, rotation);
 		spawnedPrefab.SetActive(true);

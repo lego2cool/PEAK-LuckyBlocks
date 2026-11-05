@@ -137,7 +137,7 @@ public class GetIslandStuff
 
     public static void SaveUrchinPrefab()
     {
-        GameObject? UrchinObj = FindGameObjectByPath("Map/Biome_3/Alpine/Snow_Segment/Props_Floor/Urchin");
+        GameObject? UrchinObj = FindGameObjectByPath("Map/Biome_1/Beach/Beach_Segment/Default/WallProps/Urchins/Urch");
         if (UrchinObj == null)
         {
             Debug.LogError("Couldn't find Urchin.");
@@ -147,7 +147,7 @@ public class GetIslandStuff
         Urchin = Object.Instantiate(UrchinObj);
         Urchin.name = "UrchinTemplate";
         Urchin.transform.SetParent(null);
-        Urchin.transform.position = new Vector3(0f, -10000f, 0f);
+        Urchin.transform.position = new Vector3(0f, 0f, 0f);
         Urchin.hideFlags = HideFlags.HideAndDontSave;
         Object.DontDestroyOnLoad(Urchin);
         Urchin.SetActive(false);
